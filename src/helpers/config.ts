@@ -125,7 +125,7 @@ const config: SiteConfig = {
     {
       company: 'Netsmart',
       companyUrl: 'https://netsmart.com/',
-      companyLogo: 'https://media.licdn.com/dms/image/v2/C4E0BAQHjKbcr_8VQPQ/company-logo_200_200/company-logo_200_200/0/1630639068046/netsmart_logo?e=1742428800&v=beta&t=8JvQZvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQ',
+      companyLogo: '/netsmart-logo.jpeg',
       jobTitle: 'Technology Architect - Plexus Enterprise Architecture',
       datesWorked: 'June 2025 - Present',
       responsibilities: 'Drive cloud strategy and infrastructure modernization across AWS, private cloud, and emerging platforms like Azure and GCP. Design and review infrastructure for scalability, cost efficiency, and operational excellence. Support enterprise migrations, resilience planning, and architecture validation.',
@@ -134,7 +134,7 @@ const config: SiteConfig = {
     {
       company: 'Netsmart',
       companyUrl: 'https://netsmart.com/',
-      companyLogo: 'https://media.licdn.com/dms/image/v2/C4E0BAQHjKbcr_8VQPQ/company-logo_200_200/company-logo_200_200/0/1630639068046/netsmart_logo?e=1742428800&v=beta&t=8JvQZvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQ',
+      companyLogo: '/netsmart-logo.jpeg',
       jobTitle: 'Team Lead, Network and Infrastructure - Plexus Platforms',
       datesWorked: 'March 2024 - June 2025',
       responsibilities: 'Led a team of skilled professionals ensuring security, reliability, and efficiency of hosting infrastructure. Led Network Major Incident Response team, accelerating issue identification and resolution by over 80%. Implemented NetSecDevOps practices leveraging AI/ML and code-first approaches.',
@@ -143,7 +143,7 @@ const config: SiteConfig = {
     {
       company: 'Netsmart',
       companyUrl: 'https://netsmart.com/',
-      companyLogo: 'https://media.licdn.com/dms/image/v2/C4E0BAQHjKbcr_8VQPQ/company-logo_200_200/company-logo_200_200/0/1630639068046/netsmart_logo?e=1742428800&v=beta&t=8JvQZvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQ',
+      companyLogo: '/netsmart-logo.jpeg',
       jobTitle: 'Network Security Engineer - Enterprise Cloud Technologies',
       datesWorked: 'June 2022 - March 2024',
       responsibilities: 'Specialized in managing firewalls and serving as point of escalation for datacenter issues. SME for firewalls and security technologies in both private and public cloud. Member of Security Incident Response and Major Incident Response teams.',
@@ -152,7 +152,7 @@ const config: SiteConfig = {
     {
       company: 'Onsite Logic',
       companyUrl: 'https://onsitelogic.com/',
-      companyLogo: 'https://i.ibb.co/Dt6kGFQ/brick.png',
+      companyLogo: '/onsite-logic.jpeg',
       jobTitle: 'Lead Security Engineer',
       datesWorked: 'September 2021 - June 2022',
       responsibilities: 'Engineered and implemented IT infrastructure and security policies for clients. Led a team of five on implementing security controls across various client industries. Committee Chair for Security Management.',
@@ -161,7 +161,7 @@ const config: SiteConfig = {
     {
       company: 'Cenetric Network Services',
       companyUrl: 'https://cenetric.com/',
-      companyLogo: 'https://i.ibb.co/Dt6kGFQ/brick.png',
+      companyLogo: '/cenetric-logo.jpeg',
       jobTitle: 'Security Analyst',
       datesWorked: 'May 2019 - August 2021',
       responsibilities: 'Performed in-house, on-site, and remote computer services as lead engineer on assigned projects. Worked on advanced Network, Security, and IAM rollouts for mid to large scale clients.',
@@ -438,7 +438,7 @@ const config: SiteConfig = {
 
       "In short: I architect secure systems, love a good hackathon, and believe community is where the real innovation happens."
     ],
-    picture: 'https://i.ibb.co/svxHFMD/alicia-sykes-3.jpg', // You can replace this with your own photo
+    picture: '/headshot.jpg',
   },
   techStack: {
     backend: [
