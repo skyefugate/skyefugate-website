@@ -67,8 +67,8 @@ const config: SiteConfig = {
     },
   ],
   footerInfo: {
-    author: 'Skye Fugate',
-    authorSite: 'https://github.com/skyefugate',
+    author: 'Alicia Sykes',
+    authorSite: 'https://github.com/lissy93',
     license: 'MIT',
     licenseLink: '',
     copyright: true,
