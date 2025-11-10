@@ -1,5 +1,6 @@
 <script lang="ts">
   import Heading from '$src/components/Heading.svelte';
+  import LangBadge from '$src/components/LangBadge.svelte';
   import config from '$src/helpers/config';
 
   const { volunteerExperience } = config;
@@ -7,6 +8,9 @@
   const morePages = config.routeLinks.filter(
     (link) => !['/volunteering', '/'].includes(link.route)
   );
+
+  // Community involvement image - using a professional community/networking image
+  const communityImage = 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop&crop=faces';
 </script>
 
 <!-- Page title -->
@@ -31,8 +35,9 @@
     </p>
   </section>
 
-  <!-- Navigation to other pages -->
-  <section class="navigation">
+  <!-- Community picture and navigation -->
+  <section class="community-picture">
+    <img src={communityImage} alt="Community leadership" />
     <div class="community-stats">
       <div class="stat">
         <strong>8+</strong>
@@ -44,7 +49,7 @@
       </div>
       <div class="stat">
         <strong>200+</strong>
-        <span>Monthly Event Attendance</span>
+        <span>Monthly Attendance</span>
       </div>
     </div>
     <div class="pages">
@@ -60,59 +65,59 @@
     
     {#each volunteerExperience as org}
       <div class="org-experience">
-        <div class="org-header">
-          <h3>
-            {#if org.organizationUrl}
-              <a href={org.organizationUrl} target="_blank" rel="noopener noreferrer">
-                {org.organization}
-              </a>
-            {:else}
-              {org.organization}
-            {/if}
-          </h3>
-          <h4>{org.role}</h4>
-          <p class="dates">{org.datesWorked}</p>
-        </div>
-        
-        <p class="summary">{org.responsibilities}</p>
-        
-        {#if org.achievements && org.achievements.length > 0}
-          <div class="achievements">
-            <h5>Key Achievements</h5>
-            <ul>
-              {#each org.achievements as achievement}
-                <li>{achievement}</li>
-              {/each}
-            </ul>
+        <img src={org.organizationLogo || 'https://via.placeholder.com/80x80?text=' + org.organization.charAt(0)} alt={org.organization} class="org-logo" />
+        <div class="org-details">
+          <div class="org-header">
+            <h5>
+              {#if org.organizationUrl}
+                <a href={org.organizationUrl} target="_blank" rel="noopener noreferrer">
+                  {org.role} @ {org.organization}
+                </a>
+              {:else}
+                {org.role} @ {org.organization}
+              {/if}
+            </h5>
+            <p class="dates">{org.datesWorked}</p>
           </div>
-        {/if}
-        
-        <div class="actions">
-          <a href="/volunteering/{org.organization.toLowerCase().replace(/\s+/g, '')}" class="details-link">
-            View Detailed Experience →
-          </a>
+          
+          <p class="summary">{org.responsibilities}</p>
+          
+          {#if org.technologies && org.technologies.length > 0}
+            <div class="core-technologies">
+              <h6>Core Focus Areas</h6>
+              <div class="tech-badges">
+                {#each org.technologies as tech}
+                  <LangBadge language={tech} size={16} />
+                {/each}
+              </div>
+            </div>
+          {/if}
         </div>
       </div>
     {/each}
   </section>
 
-  <!-- Community Impact -->
+  <!-- Community Impact with visual elements -->
   <section class="impact">
     <Heading level="h2" size="1.8rem">Community Impact</Heading>
     <div class="impact-grid">
       <div class="impact-item">
+        <div class="impact-icon">🎯</div>
         <h4>Event Organization</h4>
         <p>Coordinated 100+ cybersecurity events, workshops, and conferences across the Kansas City metro area.</p>
       </div>
       <div class="impact-item">
+        <div class="impact-icon">🤝</div>
         <h4>Mentorship</h4>
         <p>Guided 30+ individuals transitioning into cybersecurity careers through structured mentorship programs.</p>
       </div>
       <div class="impact-item">
+        <div class="impact-icon">🌟</div>
         <h4>Community Building</h4>
         <p>Fostered inclusive environments that welcome newcomers while challenging experienced professionals.</p>
       </div>
       <div class="impact-item">
+        <div class="impact-icon">📚</div>
         <h4>Knowledge Sharing</h4>
         <p>Delivered technical presentations and workshops on security topics to diverse audiences.</p>
       </div>
@@ -180,29 +185,38 @@
       }
     }
 
-    // Navigation section with stats
-    &.navigation {
+    // Community picture section - like about page profile picture
+    &.community-picture {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
+      
+      img {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        border-radius: var(--curve-factor);
+        object-fit: cover;
+        height: 200px;
+      }
       
       .community-stats {
         display: flex;
         justify-content: space-around;
-        margin-bottom: 1rem;
+        margin: 1rem 0;
         
         .stat {
           text-align: center;
           
           strong {
             display: block;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--accent);
             font-weight: bold;
           }
           
           span {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--dimmed-text);
           }
         }
@@ -240,6 +254,8 @@
       grid-column-start: span 2;
       
       .org-experience {
+        display: flex;
+        gap: 1rem;
         border-bottom: 1px solid var(--card-border);
         padding: 1.5rem 0;
         margin-bottom: 1rem;
@@ -249,84 +265,71 @@
           margin-bottom: 0;
         }
 
-        .org-header {
-          margin-bottom: 1rem;
+        .org-logo {
+          width: 80px;
+          height: 80px;
+          border-radius: var(--curve-factor);
+          object-fit: contain;
+          background: var(--background);
+          padding: 0.5rem;
+          flex-shrink: 0;
+        }
 
-          h3 {
-            margin: 0;
-            font-size: 1.4rem;
-            color: var(--accent);
-            
-            a {
+        .org-details {
+          flex: 1;
+
+          .org-header {
+            margin-bottom: 1rem;
+
+            h5 {
+              margin: 0;
+              font-size: 1.2rem;
               color: var(--accent);
-              text-decoration: none;
-              &:hover {
-                text-decoration: underline;
+              
+              a {
+                color: var(--accent);
+                text-decoration: none;
+                &:hover {
+                  text-decoration: underline;
+                }
               }
             }
-          }
 
-          h4 {
-            margin: 0.25rem 0;
-            font-size: 1.1rem;
-            color: var(--foreground);
-            font-weight: 500;
-          }
-
-          .dates {
-            margin: 0;
-            color: var(--dimmed-text);
-            font-size: 0.9rem;
-          }
-        }
-
-        .summary {
-          margin: 1rem 0;
-          line-height: 1.6;
-          color: var(--foreground);
-          font-family: RedHatText;
-          font-size: 1.1rem;
-        }
-
-        .achievements {
-          margin: 1.5rem 0;
-          
-          h5 {
-            margin: 0 0 0.5rem 0;
-            color: var(--accent);
-            font-size: 1rem;
-          }
-          
-          ul {
-            margin: 0;
-            padding-left: 1.5rem;
-            
-            li {
-              margin: 0.5rem 0;
-              line-height: 1.5;
-              color: var(--foreground);
+            .dates {
+              margin: 0.25rem 0 0 0;
+              color: var(--dimmed-text);
+              font-size: 0.9rem;
             }
           }
-        }
 
-        .actions {
-          margin-top: 1rem;
-          
-          .details-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
+          .summary {
+            margin: 1rem 0;
+            line-height: 1.6;
+            color: var(--foreground);
+            font-family: RedHatText;
+            font-size: 1.1rem;
+          }
 
-            &:hover {
-              text-decoration: underline;
+          .core-technologies {
+            margin: 1.5rem 0;
+            
+            h6 {
+              margin: 0 0 0.5rem 0;
+              color: var(--accent);
+              font-size: 0.9rem;
+            }
+            
+            .tech-badges {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.5rem;
             }
           }
         }
       }
     }
 
-    // Impact section
+    // Impact section with visual icons
     &.impact {
       grid-column-start: span 2;
       
@@ -337,9 +340,21 @@
         margin-top: 1rem;
         
         .impact-item {
-          padding: 1rem;
+          padding: 1.5rem;
           border: 1px solid var(--card-border);
           border-radius: var(--curve-factor);
+          text-align: center;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+          }
+          
+          .impact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+          }
           
           h4 {
             margin: 0 0 0.5rem 0;
@@ -361,13 +376,14 @@
     &.philosophy {
       blockquote {
         margin: 1rem 0;
-        padding: 1rem;
-        border-left: 3px solid var(--accent);
+        padding: 1.5rem;
+        border-left: 4px solid var(--accent);
         background: rgba(var(--accent-rgb), 0.1);
         font-style: italic;
-        font-size: 1.1rem;
-        line-height: 1.6;
+        font-size: 1.2rem;
+        line-height: 1.7;
         color: var(--foreground);
+        border-radius: 0 var(--curve-factor) var(--curve-factor) 0;
       }
       
       p {
