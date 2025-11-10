@@ -59,42 +59,31 @@
     </div>
   </section>
 
-  <!-- Volunteer Experience Section -->
-  <section class="experience">
+  <!-- Volunteer Experience Section with Hexagon Layout -->
+  <section class="volunteer-hexagons">
     <Heading level="h2" size="1.8rem">Volunteer Experience</Heading>
     
-    {#each volunteerExperience as org}
-      <div class="org-experience">
-        <img src={org.organizationLogo || 'https://via.placeholder.com/80x80?text=' + org.organization.charAt(0)} alt={org.organization} class="org-logo" />
-        <div class="org-details">
-          <div class="org-header">
-            <h5>
-              {#if org.organizationUrl}
-                <a href={org.organizationUrl} target="_blank" rel="noopener noreferrer">
-                  {org.role} @ {org.organization}
-                </a>
-              {:else}
-                {org.role} @ {org.organization}
-              {/if}
-            </h5>
-            <p class="dates">{org.datesWorked}</p>
-          </div>
-          
-          <p class="summary">{org.responsibilities}</p>
-          
-          {#if org.technologies && org.technologies.length > 0}
-            <div class="core-technologies">
-              <h6>Core Focus Areas</h6>
-              <div class="tech-badges">
-                {#each org.technologies as tech}
-                  <LangBadge language={tech} size={16} />
+    <div class="hexagon-container">
+      {#each volunteerExperience as org, index}
+        <div class="hexagon-wrapper" class:offset={index % 2 === 1}>
+          <div class="hexagon">
+            <div class="hexagon-content">
+              <img src={org.organizationLogo} alt={org.organization} class="hex-logo" />
+              <h4>{org.organization}</h4>
+              <p class="hex-role">{org.role}</p>
+              <div class="hex-tech">
+                {#each org.technologies.slice(0, 2) as tech}
+                  <LangBadge language={tech} size={12} />
                 {/each}
               </div>
+              <a href="/volunteering/{org.organization.toLowerCase().replace(/\s+/g, '')}" class="hex-link">
+                Details →
+              </a>
             </div>
-          {/if}
+          </div>
         </div>
-      </div>
-    {/each}
+      {/each}
+    </div>
   </section>
 
   <!-- Community Impact with visual elements -->
@@ -249,81 +238,120 @@
       }
     }
 
-    // Experience section - spans 2 columns like about page
-    &.experience {
+    // Volunteer hexagons section
+    &.volunteer-hexagons {
       grid-column-start: span 2;
       
-      .org-experience {
+      .hexagon-container {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 1rem;
-        border-bottom: 1px solid var(--card-border);
-        padding: 1.5rem 0;
-        margin-bottom: 1rem;
+        margin-top: 2rem;
+      }
+      
+      .hexagon-wrapper {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 1rem;
         
-        &:last-child {
-          border-bottom: none;
-          margin-bottom: 0;
+        &.offset {
+          margin-top: 3rem;
         }
-
-        .org-logo {
-          width: 80px;
-          height: 80px;
-          border-radius: var(--curve-factor);
+      }
+      
+      .hexagon {
+        width: 100%;
+        height: 100%;
+        background: var(--card-background);
+        border: 2px solid var(--accent);
+        position: relative;
+        transform: rotate(30deg);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          transform: rotate(30deg) scale(1.05);
+          border-color: var(--accent);
+          box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.3);
+        }
+        
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: var(--card-background);
+          border: 2px solid var(--accent);
+          border-radius: 20px;
+          transition: all 0.3s ease;
+        }
+        
+        &::before {
+          transform: rotate(60deg);
+        }
+        
+        &::after {
+          transform: rotate(-60deg);
+        }
+        
+        &:hover::before,
+        &:hover::after {
+          border-color: var(--accent);
+        }
+      }
+      
+      .hexagon-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-30deg);
+        text-align: center;
+        z-index: 10;
+        width: 80%;
+        
+        .hex-logo {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
           object-fit: contain;
-          background: var(--background);
-          padding: 0.5rem;
-          flex-shrink: 0;
+          margin-bottom: 0.5rem;
         }
-
-        .org-details {
-          flex: 1;
-
-          .org-header {
-            margin-bottom: 1rem;
-
-            h5 {
-              margin: 0;
-              font-size: 1.2rem;
-              color: var(--accent);
-              
-              a {
-                color: var(--accent);
-                text-decoration: none;
-                &:hover {
-                  text-decoration: underline;
-                }
-              }
-            }
-
-            .dates {
-              margin: 0.25rem 0 0 0;
-              color: var(--dimmed-text);
-              font-size: 0.9rem;
-            }
-          }
-
-          .summary {
-            margin: 1rem 0;
-            line-height: 1.6;
-            color: var(--foreground);
-            font-family: RedHatText;
-            font-size: 1.1rem;
-          }
-
-          .core-technologies {
-            margin: 1.5rem 0;
-            
-            h6 {
-              margin: 0 0 0.5rem 0;
-              color: var(--accent);
-              font-size: 0.9rem;
-            }
-            
-            .tech-badges {
-              display: flex;
-              flex-wrap: wrap;
-              gap: 0.5rem;
-            }
+        
+        h4 {
+          margin: 0.5rem 0;
+          font-size: 1rem;
+          color: var(--accent);
+          font-weight: bold;
+        }
+        
+        .hex-role {
+          margin: 0.25rem 0;
+          font-size: 0.8rem;
+          color: var(--foreground);
+          opacity: 0.8;
+        }
+        
+        .hex-tech {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.25rem;
+          margin: 0.5rem 0;
+        }
+        
+        .hex-link {
+          display: inline-block;
+          margin-top: 0.5rem;
+          color: var(--accent);
+          text-decoration: none;
+          font-size: 0.8rem;
+          font-weight: 500;
+          
+          &:hover {
+            text-decoration: underline;
           }
         }
       }
