@@ -1,11 +1,3 @@
 name = "skyefugate-website"
 compatibility_date = "2023-05-18"
-
-[env.production]
-name = "skyefugate-website"
-routes = [
-  { pattern = "skyefugate.com", zone_name = "skyefugate.com" }
-]
-
-[env.preview]
-name = "skyefugate-website-preview"
+pages_build_output_dir = ".svelte-kit/cloudflare"
