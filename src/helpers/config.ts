@@ -190,7 +190,7 @@ const config: SiteConfig = {
     {
       organization: 'SecKC',
       organizationUrl: 'https://seckc.org/',
-      organizationLogo: 'https://seckc.org/assets/images/seckc-logo.png',
+      organizationLogo: '/seckc-party-star.jpg',
       role: 'Director of Stuff & Things',
       datesWorked: 'August 2016 - Present',
       responsibilities: 'Plan and schedule InfoSec events with a monthly attendance of 200+ through collaboration with various teams. Ensure that live production for events at various venues meets quality standards. Manage a team of 50+ volunteers to ensure events are executed to attendees satisfaction.',
