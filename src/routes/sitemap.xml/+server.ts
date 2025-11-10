@@ -1,7 +1,4 @@
-import config from '$src/helpers/config';
 import type { RequestHandler } from './$types';
-import { readdir } from 'fs/promises';
-import { join } from 'path';
 
 export const prerender = true;
 
@@ -15,22 +12,10 @@ const routeConfig: Record<string, { priority: string; changefreq: string }> = {
   'volunteering/seckc': { priority: '0.5', changefreq: 'monthly' },
 };
 
-// Auto-discover routes from the file system
-async function discoverRoutes(): Promise<string[]> {
-  const routes: string[] = [];
-  
-  // Add manually configured routes
-  routes.push(...Object.keys(routeConfig));
-  
-  // You can add auto-discovery logic here if needed
-  // For now, we'll stick with manual configuration for better control
-  
-  return [...new Set(routes)]; // Remove duplicates
-}
-
-export const GET: RequestHandler = async () => {
+export const GET: RequestHandler = async ({ url }) => {
   const today = new Date().toISOString().split('T')[0];
-  const routes = await discoverRoutes();
+  const baseUrl = `${url.protocol}//${url.host}`;
+  const routes = Object.keys(routeConfig);
   
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -38,7 +23,7 @@ ${routes
   .map((route) => {
     const config_route = routeConfig[route] || { priority: '0.5', changefreq: 'monthly' };
     return `  <url>
-    <loc>${config.baseUrl}/${route}</loc>
+    <loc>${baseUrl}/${route}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${config_route.changefreq}</changefreq>
     <priority>${config_route.priority}</priority>
