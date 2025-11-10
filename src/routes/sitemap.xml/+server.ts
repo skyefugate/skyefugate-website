@@ -1,3 +1,4 @@
+import config from '$src/helpers/config';
 import type { RequestHandler } from './$types';
 
 export const prerender = true;
@@ -12,9 +13,8 @@ const routeConfig: Record<string, { priority: string; changefreq: string }> = {
   'volunteering/seckc': { priority: '0.5', changefreq: 'monthly' },
 };
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async () => {
   const today = new Date().toISOString().split('T')[0];
-  const baseUrl = `${url.protocol}//${url.host}`;
   const routes = Object.keys(routeConfig);
   
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -23,7 +23,7 @@ ${routes
   .map((route) => {
     const config_route = routeConfig[route] || { priority: '0.5', changefreq: 'monthly' };
     return `  <url>
-    <loc>${baseUrl}/${route}</loc>
+    <loc>${config.baseUrl}/${route}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${config_route.changefreq}</changefreq>
     <priority>${config_route.priority}</priority>
