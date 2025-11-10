@@ -197,6 +197,26 @@ const config: SiteConfig = {
       achievements: ['11 Time Speaker', 'Monthly events with 200+ attendance', 'Manage 50+ volunteers'],
       technologies: ['Event Management', 'Team Leadership', 'Public Speaking', 'InfoSec Community'],
     },
+    {
+      organization: 'ITDRC',
+      organizationUrl: 'https://www.itdrc.org/',
+      organizationLogo: '/ITDRC_logo.png',
+      role: 'Volunteer',
+      datesWorked: '2020 - Present',
+      responsibilities: 'Support IT disaster recovery operations and emergency communications infrastructure. Assist with technology deployment and coordination during disaster response scenarios.',
+      achievements: ['Emergency Communications', 'Disaster Response Support', 'Technology Deployment'],
+      technologies: ['Emergency Communications', 'Disaster Recovery', 'IT Infrastructure', 'Crisis Management'],
+    },
+    {
+      organization: 'DEF CON',
+      organizationUrl: 'https://defcon.org/',
+      organizationLogo: 'https://media.defcon.org/DEF%20CON%2032/DEF%20CON%2032%20logos/defcon-32-logo-red-black.png',
+      role: 'Volunteer',
+      datesWorked: '2019 - Present',
+      responsibilities: 'Support conference operations at the world\'s largest hacker convention. Assist with event logistics, attendee support, and maintaining the unique DEF CON culture and experience.',
+      achievements: ['Multi-year Volunteer', 'Conference Operations', 'Community Support'],
+      technologies: ['Event Operations', 'Community Management', 'Hacker Culture', 'Conference Logistics'],
+    },
   ],
   projectComplimentaryData: [
     {
