@@ -476,15 +476,19 @@ const config: SiteConfig = {
 `,
   },
   about: {
-    intro: 'Software Developer & Tech Enthusiast',
+    intro: 'Enterprise Technology Architect & InfoSec Community Builder',
     bio: [
-      "I'm Skye, a software developer passionate about building great digital experiences.",
+      "Hey, I'm Skye.",
 
-      "I enjoy working with modern web technologies and am always exploring new tools and frameworks to improve my craft.",
+      "I build, break, rebuild, and secure stuff that keeps technology running — currently an Enterprise Technology Architect at Netsmart.",
 
-      "When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or learning something new.",
+      "I'm deep into cloud architecture, automation, and technology classes on Udemy at 2am.",
 
-      "Feel free to check out my projects and get in touch if you'd like to collaborate!",
+      "Outside the day job, I help run InfoSec events like SecKC, BSidesKC, and DEF CON — wrangling volunteers, planning chaos, and making sure the community stays fun, inclusive, and just the right amount of weird.",
+
+      "I really enjoy sharing knowledge — mentoring, giving talks, and showing people that cybersecurity isn't a dark art. It's just puzzles, teamwork, and persistence — with the occasional caffeine fueled incident call.",
+
+      "In short: I architect secure systems, love a good hackathon, and believe community is where the real innovation happens."
     ],
     picture: 'https://i.ibb.co/svxHFMD/alicia-sykes-3.jpg', // You can replace this with your own photo
   },
