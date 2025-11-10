@@ -56,7 +56,7 @@ const translations: Translations = {
 export const supportedLanguages: LanguageMeta[] = [
   {
     name: 'English',
-    flag: '🇬🇧',
+    flag: '🇺🇸',
     code: 'en',
     text: translations.en,
   },

@@ -1,41 +1,107 @@
-<h1 align="center">✨ My Website</h1>
+<h1 align="center">✨ Skye Fugate's Website</h1>
 <p align="center">
-  <i>A re-usable aggregated portfolio and blog site for developers</i><br>
-  <b><a href="https://aliciasykes.com/">aliciasykes.com</a></b>
+  <i>Personal portfolio and professional website for a Technology Architect</i><br>
+  <b><a href="https://fugate.dev/">fugate.dev</a></b>
 </p>
 <p align="center">
-  <a href="https://devolio.netlify.app">
-    <img width="700" src="https://raw.githubusercontent.com/Lissy93/my-website/master/static/screenshot.png" />
+  <a href="https://fugate.dev">
+    <img width="700" src="https://raw.githubusercontent.com/skyefugate/skyefugate-website/master/static/screenshot.png" />
   </a>
 </p>
 
+## About This Site
 
-## Intro
+This is my personal website, built using the amazing **Devolio** template created by [Alicia Sykes](https://aliciasykes.com).
 
-This is my personal website. It's configurable, so feel free to use it, or any parts of it for yourself :)
+**What it showcases:**<br>
 
-**About**<br>
-A self-hosted developer homepage, to showcase your projects, posts, coding stats, and more.<br>
-Data is fetched from external sources (GitHub, RSS, social platforms...), so no need for a CMS.<br>
-Crafted with SvelteKit + TypeScript- prioritising SEO, performance, accessibility, and compatibility.<br>
+- Professional work experience and career progression
+- Personal projects and open source contributions  
+- Volunteer work and community involvement (SecKC leadership)
+- Technical skills and expertise
+- Contact information and social profiles
+
+**Built with:**<br>
+SvelteKit + TypeScript, prioritizing SEO, performance, accessibility, and compatibility.<br>
+Data is fetched from external sources (GitHub, RSS, social platforms), so no CMS needed.
+
+---
+
+## Original Template Credit
+
+This website is built on the incredible **[Devolio](https://github.com/Lissy93/devolio)** template by **[Alicia Sykes](https://aliciasykes.com)**.
+
+Alicia created this masterpiece as a configurable, self-hosted developer portfolio that aggregates data from multiple sources. The template is open source and available for anyone to use - I highly recommend checking out her work!
+
+- **Original Repository:** [Lissy93/devolio](https://github.com/Lissy93/devolio)
+- **Creator:** [Alicia Sykes](https://aliciasykes.com)
+- **License:** MIT
+
+All credit for the core functionality, design patterns, and architecture goes to Alicia. I've simply customized it with my own content and made minor modifications to suit my needs.
+
+---
+
+## Site Features
+
+This website includes:
+
+- **Professional Experience** - Complete work history from Micro Center to current Technology Architect role at Netsmart
+- **Volunteer Leadership** - Detailed section on SecKC community involvement and InfoSec event management  
+- **Project Portfolio** - GitHub integration showing personal and open source projects
+- **Contact Information** - Professional contact details and social media links
+- **Responsive Design** - Works great on desktop, tablet, and mobile
+- **Fast Performance** - Optimized for speed with server-side rendering
+
+---
+
+## Development
+
+If you want to run this locally or use the original template:
+
+```bash
+# 1. Clone the original Devolio template
+git clone git@github.com:Lissy93/devolio.git && cd devolio
+
+# 2. Install dependencies  
+pnpm install
+
+# 3. Start the development server
+pnpm run dev -- --open
+```
+
+For the original template documentation, deployment guides, and configuration options, visit the **[Devolio repository](https://github.com/Lissy93/devolio)**.
+
+---
+
+## License
+
+This site is built on the **[Devolio](https://github.com/Lissy93/devolio)** template by **[Alicia Sykes](https://aliciasykes.com)**, which is licensed under MIT.
+
+> _**[Lissy93/Devolio](https://github.com/Lissy93/devolio)** is licensed under [MIT](https://gist.github.com/Lissy93/143d2ee01ccc5c052a17) © [Alicia Sykes](https://aliciasykes.com) 2022._
+
+My customizations and content are also available under the same MIT license.
+
+---
+
+<!-- License + Copyright -->
+<p align="center">
+  <i>Built with ❤️ using <a href="https://github.com/Lissy93/devolio">Devolio</a> by <a href="https://aliciasykes.com">Alicia Sykes</a></i><br>
+  <i>© <a href="https://fugate.dev">Skye Fugate</a> 2025</i><br>
+  <a href="https://github.com/skyefugate"><img src="https://i.ibb.co/4KtpYxb/octocat-clean-mini.png" /></a><br>
+  <sup>Thanks for visiting :)</sup>
+</p>
 
 **Contents**
-- [**Intro**](#intro)
-- [**Usage Guides**](#developing)
-  - [Developing](#developing)
-  - [Deploying](#deploying)
-  - [Configuring](#configuring)
-- [**Community**](#community)
-  - [Report an Issue](#report-an-issue)
-  - [Contributing](#contributing)
-  - [Support](#support)
-  - [Credits](#credits)
+
+- [**About This Site**](#about-this-site)
+- [**Original Template Credit**](#original-template-credit)
+- [**Site Features**](#site-features)
+- [**Development**](#development)
 - [**License**](#license)
 
 <sub>A tutorial, for how to build something similar is available on **[DEV.to](https://dev.to/lissy93/sveltekit-10-build-an-blog-fetching-posts-from-your-dev-profile-29f)**</sub>
 
 <sup>A mirror of this repository is available at **[codeberg.org/alicia/devolio](https://codeberg.org/alicia/devolio)**</sup>
-
 
 ### Pages
 
@@ -84,7 +150,6 @@ The about page has space for a short bio, profile image, work experience and tec
 <img width="800" src="https://i.ibb.co/2MrSN7F/about-page.png" />
 </p>
 
-
 </details>
 
 ### Tech
@@ -98,7 +163,6 @@ The about page has space for a short bio, profile image, work experience and tec
 ✅ Server-side rendering for good SEO<br>
 ✅ Meets accessibility standards<br>
 ✅ Fully responsive<br>
-
 
 </details>
 
