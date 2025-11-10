@@ -27,11 +27,6 @@
       value: '@lissy93:matrix.org',
       link: 'https://matrix.to/#/@lissy93:matrix.org',
     },
-    {
-      label: 'XMPP',
-      value: 'alicia@xmpp.is',
-      link: 'xmpp:alicia@xmpp.is?join',
-    },
     { label: 'Signal', value: 'trusted contacts only', link: '' },
   ];
 </script>
