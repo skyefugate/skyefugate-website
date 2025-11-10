@@ -6,7 +6,7 @@
 </script>
 
 <section class="title">
-  <Heading level="h2" size="2.5rem">Volunteering</Heading>
+  <Heading level="h2" size="2.5rem">>Volunteering</Heading>
 </section>
 
 <section class="intro">
@@ -22,22 +22,17 @@
   {#each volunteerExperience as org}
     <div class="org-card">
       <div class="org-header">
-        {#if org.organizationLogo}
-          <img src={org.organizationLogo} alt="{org.organization} logo" class="org-logo" />
-        {/if}
-        <div class="org-info">
-          <h3>
-            {#if org.organizationUrl}
-              <a href={org.organizationUrl} target="_blank" rel="noopener noreferrer">
-                {org.organization}
-              </a>
-            {:else}
+        <h3>
+          {#if org.organizationUrl}
+            <a href={org.organizationUrl} target="_blank" rel="noopener noreferrer">
               {org.organization}
-            {/if}
-          </h3>
-          <h4>{org.role}</h4>
-          <p class="dates">{org.datesWorked}</p>
-        </div>
+            </a>
+          {:else}
+            {org.organization}
+          {/if}
+        </h3>
+        <h4>{org.role}</h4>
+        <p class="dates">{org.datesWorked}</p>
       </div>
       
       <p class="summary">{org.responsibilities}</p>
@@ -109,25 +104,12 @@
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
   }
 
   .org-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
     margin-bottom: 1rem;
-  }
 
-  .org-logo {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    border-radius: var(--curve-factor);
-  }
-
-  .org-info {
     h3 {
       margin: 0;
       font-size: 1.4rem;
@@ -160,10 +142,6 @@
     margin: 1rem 0;
     line-height: 1.6;
     color: var(--foreground);
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .highlights {
@@ -195,7 +173,6 @@
     transition: all 0.2s ease;
 
     &:hover {
-      color: var(--accent-bright, var(--accent));
       text-decoration: underline;
     }
   }
