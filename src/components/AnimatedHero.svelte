@@ -14,10 +14,10 @@
       'Hello 👋',
       '\n',
       'I\'m Skye',
-      'I build apps 🛠️',
-      'that put you first 🥇',
-      'with privacy at the core 🔐',
-      'and clear and helpful documentation 📚',
+      'I architect secure systems 🛠️',
+      'that keep technology running 🚀',
+      'with security at the core 🔐',
+      'and automation that actually works ⚡',
       'Thanks for visiting 🥰'
     ];
 
