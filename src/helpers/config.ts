@@ -2,7 +2,7 @@ import type { SiteConfig } from '$src/types/Config';
 
 const config: SiteConfig = {
   title: 'Skye Fugate',
-  description: '',
+  description: 'Technology Architect specializing in secure systems and automation',
   source: 'https://github.com/skyefugate/skyefugate-website',
   baseUrl: 'https://skyefugate.com',
   initialFeeds: [{ label: 'Notes', url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/blog.atom' }],
