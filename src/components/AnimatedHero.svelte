@@ -13,7 +13,7 @@
     const lines = [
       'Hello 👋',
       '\n',
-      'I\'m Alicia',
+      'I\'m Skye',
       'I build apps 🛠️',
       'that put you first 🥇',
       'with privacy at the core 🔐',
