@@ -473,51 +473,44 @@ const config: SiteConfig = {
   techStack: {
     backend: [
       {
-        language: 'Rust',
-        projects: ['AdGuardian-Term'],
+        language: 'Python',
+        projects: ['portainer-templates', 'gh-trending-no-cors', 'automation-scripts'],
       },
       {
         language: 'Go',
-        projects: ['who-dat', 'go-apod', 'OLD_AdGuardian-Term'],
+        projects: ['who-dat', 'go-apod', 'infrastructure-tools'],
       },
       {
         language: 'Node',
-        projects: ['twitter-sentiment-visualisation', 'quick-example-of-testing-in-nodejs'],
+        projects: ['monitoring-dashboards', 'api-integrations'],
       },
       {
-        language: 'Python',
-        projects: ['portainer-templates', 'gh-trending-no-cors', 'tfl-lift-availability-dash', 'pax'],
+        language: 'Bash',
+        projects: ['deployment-scripts', 'system-automation'],
       },
       {
-        language: 'Java',
-        projects: ['Minesweper', 'AlternativeVoteSystem', 'TuneSender', 'TreasureHunt'],
-      },
-      {
-        language: 'PHP',
-        projects: [ 'revision-quizzes', 'intern-magnet', 'usermonkey' ],
+        language: 'PowerShell',
+        projects: ['windows-automation', 'ad-management'],
       },
     ],
     frontend: [
       {
-        language: 'Vue',
-        projects: ['dashy', 'all-the-countries', 'alicia-sykes-website', 'tfl-lift-availability-dash'],
-      },
-      {
         language: 'Svelte',
-        projects: ['my-website', 'cheat-code'],
+        projects: ['skyefugate-website', 'dashboard-interfaces'],
       },
       {
         language: 'React',
-        projects: ['web-check'],
+        projects: ['monitoring-ui', 'admin-panels'],
       },
       {
-        language: 'Solid',
-        projects: ['cso'],
+        language: 'Vue',
+        projects: ['configuration-portals', 'status-dashboards'],
       },
       {
-        language: 'Angular',
-        projects: ['happy-app', 'realtime-speech-analytics'],
+        language: 'HTML/CSS',
+        projects: ['documentation-sites', 'landing-pages'],
       },
+    ],
       {
         language: 'Astro',
         projects: ['git-into-open-source'],
@@ -540,61 +533,58 @@ const config: SiteConfig = {
       },
     ],
     mobile: [
+    ],
+    mobile: [
       {
-        language: 'Swift',
-        projects: ['hasami-shogi', 'Spotter'],
-      },
-      {
-        language: 'Kotlin',
-        projects: ['anti-theft-charge'],
-      },
-      {
-        language: 'Flutter',
-        projects: ['nfu'],
+        language: 'iOS/macOS',
+        projects: ['device-management', 'enterprise-apps'],
       },
       {
         language: 'Android',
-        projects: ['Minesweper', 'anti-theft-charge', 'TuneSender', 'TreasureHunt', 'got-home-safe', 'Study-Time'],
+        projects: ['security-tools', 'monitoring-apps'],
       },
-      // {
-      //   language: 'React Native',
-      //   projects: [''],
-      // },
     ],
     other: [
       {
         language: 'Bash',
-        projects: ['minimal-terminal-prompt'],
+        projects: ['automation-scripts', 'deployment-tools'],
+      },
+      {
+        language: 'PowerShell',
+        projects: ['windows-automation', 'ad-scripts'],
       },
       {
         language: 'Docker',
-        projects: ['docker-tcpdump', 'dashy'],
+        projects: ['containerization', 'microservices'],
       },
       {
-        language: 'Config',
-        projects: ['dotfiles', 'espanso-config', 'conky-system-stats-widget', 'Brewfile'],
+        language: 'Terraform',
+        projects: ['infrastructure-as-code', 'cloud-provisioning'],
       },
       {
-        language: 'Markdown',
-        projects: ['personal-security-checklist', 'awesome-privacy'],
+        language: 'YAML/JSON',
+        projects: ['configuration-management', 'ci-cd-pipelines'],
       },
     ],
   },
   techStackExtras: {
     devOps: [
-      'Ansible', 'Kubernetes', 'Prometheus', 'GitHubActions', 'Grafana',
+      'Ansible', 'Terraform', 'Kubernetes', 'Docker', 'GitHubActions', 'Jenkins',
     ],
     cloud: [
-      'Netlify', 'Vercel', 'Cloudflare', 'Azure', 'AWS', 'GCP',
+      'AWS', 'Azure', 'GCP', 'Cloudflare', 'VMware', 'Hyper-V',
     ],
     databases: [
-      'PostgreSQL', 'SQLite', 'Redis','MySQL', 'MongoDB',
+      'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'SQLite',
     ],
-    testing: [
-      'Jest', 'Puppeteer', 'Enzyme', 'Cypress',
+    networking: [
+      'Cisco', 'Juniper', 'pfSense', 'VPN', 'Load Balancers', 'DNS',
     ],
     security: [
-      'Nmap', 'OWASPZAP', 'BurpSuite', 'Wireshark',
+      'Firewalls', 'SIEM', 'Vulnerability Scanning', 'Incident Response', 'Network Security',
+    ],
+    monitoring: [
+      'Prometheus', 'Grafana', 'Datadog', 'Splunk', 'ELK Stack',
     ],
   },
 };
