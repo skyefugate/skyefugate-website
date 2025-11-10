@@ -83,10 +83,10 @@
     commandStyle={false}
     blinkCursor={true}
     size="4rem"
-    color="var(--home-accent-background)">Alicia Sykes</Heading
+    color="var(--home-accent-background)">Skye Fugate</Heading
   > -->
   
-  <h1>Alicia Sykes</h1>
+  <h1>Skye Fugate</h1>
   <div class="socials">
     {#each socialLinks as social}
       {#if social}

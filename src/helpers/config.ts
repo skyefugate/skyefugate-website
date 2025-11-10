@@ -569,7 +569,7 @@ const config: SiteConfig = {
   },
   plausible: {
     scriptSrc: 'https://no-track.as93.net/js/script.js',
-    domain: 'aliciasykes.com',
+    domain: 'skyefugate.com',
   },
 };
 
