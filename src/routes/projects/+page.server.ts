@@ -1,7 +1,8 @@
 import { config } from '$src/store/BlogStore';
 import { GITHUB_TOKEN } from '$env/static/private';
-import { CODEBERG_TOKEN } from '$env/static/private';
 import type { Project, Mirror } from '$src/types/Project';
+
+const CODEBERG_TOKEN = '';
 
 export const prerender = true;
 
