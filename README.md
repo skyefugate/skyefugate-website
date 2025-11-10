@@ -13,6 +13,7 @@
 - [About This Site](#about-this-site)
 - [Original Template Credit](#original-template-credit)
 - [Site Features](#site-features)
+- [Site Map](#site-map)
 - [Development](#development)
 - [License](#license)
 
@@ -64,6 +65,31 @@ This website includes:
 
 **Tech Stack:**<br>
 Built with Svelte, using SvelteKit and written in TypeScript. The build system is Vite/Rollup, with dependencies managed with PNPM. Standards implemented with ESLint and Prettier, with testing done using Vitest and Playwright. Styles are composed in SCSS with CSS variables for theming.
+
+---
+
+## Site Map
+
+All accessible pages on the website:
+
+### **Main Navigation Pages**
+- **[Home](https://fugate.dev/)** (`/`) - Landing page with animated intro and navigation
+- **[Projects](https://fugate.dev/projects)** (`/projects`) - GitHub-integrated project portfolio with filtering
+- **[Contact](https://fugate.dev/contact)** (`/contact`) - Contact form, social links, and GPG keys
+- **[About](https://fugate.dev/about)** (`/about`) - Bio, work experience, tech stack, and resume
+
+### **Sub-Navigation Pages**
+- **[Volunteering](https://fugate.dev/volunteering)** (`/volunteering`) - Community involvement overview
+- **[SecKC Details](https://fugate.dev/volunteering/seckc)** (`/volunteering/seckc`) - Detailed SecKC volunteer work
+
+### **Hidden/Accessible Pages**
+- **[Blog](https://fugate.dev/blog)** (`/blog`) - RSS feed aggregation (currently disabled in nav)
+- **[Blog Posts](https://fugate.dev/blog/[slug])** (`/blog/[slug]`) - Individual blog post pages
+
+### **System Pages**
+- **Error Page** (`/error`) - Custom 500/404 error handling
+
+**Note:** The blog functionality exists but is currently commented out of the main navigation. All pages follow the same terminal-inspired design aesthetic with proper responsive layouts.
 
 ---
 
