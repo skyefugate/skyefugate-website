@@ -1,34 +1,30 @@
 <script>
   import { page } from '$app/stores';
   import LinkButton from '$src/components/LinkButton.svelte';
+  import config from '$src/helpers/config';
 
-  const emojis = {
-    401: '🔒',
-    403: '🚫',
-    404: '🧱',
-    420: '🫠',
-    500: '💥',
-    501: '🚧',
-  };
+  $: status = $page.status || 500;
+  $: catImageUrl = `https://http.cat/${status}.jpg`;
 </script>
 
 <svelte:head>
-  <title>{$page.status} - {$page.error.message} | Skye Fugate</title>
-  <meta name="description" content="Page not found. The requested page doesn't exist on Skye Fugate's website." />
+  <title>{status} - {$page.error?.message || 'Error'} | {config.author}</title>
+  <meta name="description" content="Page not found. The requested page doesn't exist on {config.author}'s website." />
 </svelte:head>
 
 <div class="errors-as-far-as-the-eye-can-see">
 <h1>
-  <span>{$page.status}</span>
+  <span>{status}</span>
   <br>
-  {$page.error.message}
+  {$page.error?.message || 'Something went wrong'}
 </h1>
 <p>This is sad :'(</p>
-<span style="font-size: 10em">
-  {emojis[$page.status] ?? emojis[500]}
-</span>
 
-{#if $page.status === 404}
+<div class="cat-container">
+  <img src={catImageUrl} alt="HTTP {status} Cat" class="http-cat" />
+</div>
+
+{#if status === 404}
   <div class="suggestions">
     <p>Try these pages instead:</p>
     <div class="suggestion-links">
@@ -58,6 +54,18 @@
   p {
     margin: 0.5rem 0;
     color: var(--dimmed-text);
+  }
+}
+
+.cat-container {
+  margin: 2rem 0;
+  
+  .http-cat {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: var(--curve-factor);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
 }
 

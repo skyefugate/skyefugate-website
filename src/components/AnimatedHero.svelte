@@ -1,6 +1,7 @@
 <script lang="ts">
   import TypeIt from "typeit";
   import { onMount } from 'svelte';
+  import config from '$src/helpers/config';
 
   // Generates a random number of ms between 2 values
   const randomTime = (min: number = 2, max: number = 12) => {
@@ -13,7 +14,7 @@
     const lines = [
       'Hello 👋',
       '\n',
-      'I\'m Skye',
+      `I'm ${config.author}`,
       'I architect secure systems 🛠️',
       'that keep technology running 🚀',
       'with security at the core 🔐',
