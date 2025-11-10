@@ -24,10 +24,29 @@
       Through volunteer leadership roles, I help organize events, mentor others, and contribute to 
       the growth of our industry's knowledge sharing and professional development.
     </p>
+    <p>
+      I believe that community is where real innovation happens. Whether it's organizing large-scale 
+      conferences, mentoring newcomers to the field, or building inclusive spaces for learning, 
+      volunteer work has shaped both my career and my perspective on what makes technology meaningful.
+    </p>
   </section>
 
   <!-- Navigation to other pages -->
   <section class="navigation">
+    <div class="community-stats">
+      <div class="stat">
+        <strong>8+</strong>
+        <span>Years Volunteering</span>
+      </div>
+      <div class="stat">
+        <strong>50+</strong>
+        <span>Volunteers Managed</span>
+      </div>
+      <div class="stat">
+        <strong>200+</strong>
+        <span>Monthly Event Attendance</span>
+      </div>
+    </div>
     <div class="pages">
       {#each morePages as page}
         <a href={page.route} style={`--page-color: ${page.color};`}>{page.label}</a>
@@ -35,40 +54,85 @@
     </div>
   </section>
 
-  <!-- Volunteer organizations -->
-  {#each volunteerExperience as org}
-    <section class="org-card">
-      <div class="org-header">
-        <h3>
-          {#if org.organizationUrl}
-            <a href={org.organizationUrl} target="_blank" rel="noopener noreferrer">
+  <!-- Volunteer Experience Section -->
+  <section class="experience">
+    <Heading level="h2" size="1.8rem">Volunteer Experience</Heading>
+    
+    {#each volunteerExperience as org}
+      <div class="org-experience">
+        <div class="org-header">
+          <h3>
+            {#if org.organizationUrl}
+              <a href={org.organizationUrl} target="_blank" rel="noopener noreferrer">
+                {org.organization}
+              </a>
+            {:else}
               {org.organization}
-            </a>
-          {:else}
-            {org.organization}
-          {/if}
-        </h3>
-        <h4>{org.role}</h4>
-        <p class="dates">{org.datesWorked}</p>
-      </div>
-      
-      <p class="summary">{org.responsibilities}</p>
-      
-      {#if org.achievements && org.achievements.length > 0}
-        <div class="highlights">
-          {#each org.achievements.slice(0, 3) as achievement}
-            <span class="highlight-tag">{achievement}</span>
-          {/each}
+            {/if}
+          </h3>
+          <h4>{org.role}</h4>
+          <p class="dates">{org.datesWorked}</p>
         </div>
-      {/if}
-      
-      <div class="actions">
-        <a href="/volunteering/{org.organization.toLowerCase().replace(/\s+/g, '')}" class="details-link">
-          View Details →
-        </a>
+        
+        <p class="summary">{org.responsibilities}</p>
+        
+        {#if org.achievements && org.achievements.length > 0}
+          <div class="achievements">
+            <h5>Key Achievements</h5>
+            <ul>
+              {#each org.achievements as achievement}
+                <li>{achievement}</li>
+              {/each}
+            </ul>
+          </div>
+        {/if}
+        
+        <div class="actions">
+          <a href="/volunteering/{org.organization.toLowerCase().replace(/\s+/g, '')}" class="details-link">
+            View Detailed Experience →
+          </a>
+        </div>
       </div>
-    </section>
-  {/each}
+    {/each}
+  </section>
+
+  <!-- Community Impact -->
+  <section class="impact">
+    <Heading level="h2" size="1.8rem">Community Impact</Heading>
+    <div class="impact-grid">
+      <div class="impact-item">
+        <h4>Event Organization</h4>
+        <p>Coordinated 100+ cybersecurity events, workshops, and conferences across the Kansas City metro area.</p>
+      </div>
+      <div class="impact-item">
+        <h4>Mentorship</h4>
+        <p>Guided 30+ individuals transitioning into cybersecurity careers through structured mentorship programs.</p>
+      </div>
+      <div class="impact-item">
+        <h4>Community Building</h4>
+        <p>Fostered inclusive environments that welcome newcomers while challenging experienced professionals.</p>
+      </div>
+      <div class="impact-item">
+        <h4>Knowledge Sharing</h4>
+        <p>Delivered technical presentations and workshops on security topics to diverse audiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer Philosophy -->
+  <section class="philosophy">
+    <Heading level="h2" size="1.8rem">Volunteer Philosophy</Heading>
+    <blockquote>
+      "Technology is only as strong as the community that builds it. My volunteer work focuses on 
+      creating spaces where people can learn, grow, and contribute regardless of their background 
+      or experience level."
+    </blockquote>
+    <p>
+      I approach volunteer leadership with the same rigor I bring to my professional work: 
+      strategic planning, clear communication, and a focus on measurable outcomes that benefit 
+      the entire community.
+    </p>
+  </section>
 </div>
 
 <style lang="scss">
@@ -116,11 +180,33 @@
       }
     }
 
-    // Navigation section - similar to about page's picture section
+    // Navigation section with stats
     &.navigation {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      gap: 1.5rem;
+      
+      .community-stats {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+        
+        .stat {
+          text-align: center;
+          
+          strong {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: bold;
+          }
+          
+          span {
+            font-size: 0.9rem;
+            color: var(--dimmed-text);
+          }
+        }
+      }
       
       .pages {
         opacity: 0.9;
@@ -149,83 +235,147 @@
       }
     }
 
-    // Organization cards
-    &.org-card {
-      transition: all 0.3s ease;
+    // Experience section - spans 2 columns like about page
+    &.experience {
+      grid-column-start: span 2;
       
-      &:hover {
-        transform: translateY(-2px);
-      }
-
-      .org-header {
+      .org-experience {
+        border-bottom: 1px solid var(--card-border);
+        padding: 1.5rem 0;
         margin-bottom: 1rem;
+        
+        &:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
+        }
 
-        h3 {
-          margin: 0;
-          font-size: 1.4rem;
-          color: var(--accent);
+        .org-header {
+          margin-bottom: 1rem;
+
+          h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--accent);
+            
+            a {
+              color: var(--accent);
+              text-decoration: none;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+
+          h4 {
+            margin: 0.25rem 0;
+            font-size: 1.1rem;
+            color: var(--foreground);
+            font-weight: 500;
+          }
+
+          .dates {
+            margin: 0;
+            color: var(--dimmed-text);
+            font-size: 0.9rem;
+          }
+        }
+
+        .summary {
+          margin: 1rem 0;
+          line-height: 1.6;
+          color: var(--foreground);
+          font-family: RedHatText;
+          font-size: 1.1rem;
+        }
+
+        .achievements {
+          margin: 1.5rem 0;
           
-          a {
+          h5 {
+            margin: 0 0 0.5rem 0;
+            color: var(--accent);
+            font-size: 1rem;
+          }
+          
+          ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            
+            li {
+              margin: 0.5rem 0;
+              line-height: 1.5;
+              color: var(--foreground);
+            }
+          }
+        }
+
+        .actions {
+          margin-top: 1rem;
+          
+          .details-link {
             color: var(--accent);
             text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+
             &:hover {
               text-decoration: underline;
             }
           }
         }
+      }
+    }
 
-        h4 {
-          margin: 0.25rem 0;
-          font-size: 1.1rem;
-          color: var(--foreground);
-          font-weight: 500;
-        }
-
-        .dates {
-          margin: 0;
-          color: var(--dimmed-text);
-          font-size: 0.9rem;
+    // Impact section
+    &.impact {
+      grid-column-start: span 2;
+      
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+        
+        .impact-item {
+          padding: 1rem;
+          border: 1px solid var(--card-border);
+          border-radius: var(--curve-factor);
+          
+          h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--accent);
+            font-size: 1.1rem;
+          }
+          
+          p {
+            margin: 0;
+            line-height: 1.5;
+            color: var(--foreground);
+            font-size: 0.95rem;
+          }
         }
       }
+    }
 
-      .summary {
+    // Philosophy section
+    &.philosophy {
+      blockquote {
         margin: 1rem 0;
+        padding: 1rem;
+        border-left: 3px solid var(--accent);
+        background: rgba(var(--accent-rgb), 0.1);
+        font-style: italic;
+        font-size: 1.1rem;
         line-height: 1.6;
         color: var(--foreground);
-        font-family: RedHatText;
       }
-
-      .highlights {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+      
+      p {
         margin: 1rem 0;
-
-        .highlight-tag {
-          background: var(--accent);
-          color: var(--background);
-          padding: 0.25rem 0.75rem;
-          border-radius: var(--curve-factor);
-          font-size: 0.8rem;
-          font-weight: 500;
-        }
-      }
-
-      .actions {
-        margin-top: 1.5rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--card-border);
-      }
-
-      .details-link {
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.2s ease;
-
-        &:hover {
-          text-decoration: underline;
-        }
+        font-size: 1.1rem;
+        line-height: 1.6;
+        font-family: RedHatText;
+        color: var(--foreground);
       }
     }
   }
