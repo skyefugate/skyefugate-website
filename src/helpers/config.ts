@@ -170,7 +170,7 @@ const config: SiteConfig = {
     {
       company: 'Micro Center',
       companyUrl: 'https://microcenter.com/',
-      companyLogo: '',
+      companyLogo: '/micro-center-logo.jpeg',
       jobTitle: 'Apple/Service Engineering Leader',
       datesWorked: 'May 2018 - May 2019',
       responsibilities: 'Diagnosed and repaired macOS, iOS, and Windows devices. Ensured KPIs including Customer Satisfaction, Profit and Loss, and Authorized Service Provider Metrics were met through collaboration with a team of 20+. iOS Repair Deployment Lead and Supervising/Training Technician.',
