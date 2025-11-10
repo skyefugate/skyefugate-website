@@ -76,9 +76,9 @@
                   <LangBadge language={tech} size={12} />
                 {/each}
               </div>
-              <a href="/volunteering/{org.organization.toLowerCase().replace(/\s+/g, '')}" class="hex-link">
-                Details →
-              </a>
+              <span class="hex-link">
+                {org.role}
+              </span>
             </div>
           </div>
         </div>
@@ -345,14 +345,9 @@
         .hex-link {
           display: inline-block;
           margin-top: 0.5rem;
-          color: var(--accent);
-          text-decoration: none;
+          color: var(--dimmed-text);
           font-size: 0.8rem;
           font-weight: 500;
-          
-          &:hover {
-            text-decoration: underline;
-          }
         }
       }
     }
