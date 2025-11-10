@@ -36,6 +36,8 @@
         src={config.plausible?.scriptSrc}></script>
   {/if}
 
+  <meta name="description" content={config.description} />
+  <link rel="canonical" href={config.baseUrl + $page.url.pathname} />
   <meta property="og:url" content={config.baseUrl} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={config.title} />

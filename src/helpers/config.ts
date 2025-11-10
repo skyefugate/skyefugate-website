@@ -1,7 +1,7 @@
 import type { SiteConfig } from '$src/types/Config';
 
 const config: SiteConfig = {
-  title: 'Skye Fugate',
+  title: 'Skye Fugate - Technology Architect & InfoSec Leader',
   description: 'The personal website of Skye Fugate',
   source: 'https://github.com/skyefugate/skyefugate-website',
   baseUrl: 'https://skyefugate.com',
