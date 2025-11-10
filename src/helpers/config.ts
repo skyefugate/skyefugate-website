@@ -1,10 +1,10 @@
 import type { SiteConfig } from '$src/types/Config';
 
 const config: SiteConfig = {
-  title: 'Alicia Sykes',
+  title: 'Skye Fugate',
   description: '',
-  source: 'https://github.com/lissy93/my-website',
-  baseUrl: 'https://as93.net',
+  source: 'https://github.com/skyefugate/skyefugate-website',
+  baseUrl: 'https://skyefugate.com',
   initialFeeds: [{ label: 'Notes', url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/blog.atom' }],
   additionalFeeds: [
     { label: 'Notes', url: 'https://notes.aliciasykes.com/feed' },
@@ -67,13 +67,13 @@ const config: SiteConfig = {
     },
   ],
   footerInfo: {
-    author: 'Alicia Sykes',
-    authorSite: 'https://github.com/lissy93',
+    author: 'Skye Fugate',
+    authorSite: 'https://github.com/skyefugate',
     license: 'MIT',
     licenseLink: '',
     copyright: true,
   },
-  githubUser: 'lissy93',
+  githubUser: 'skyefugate',
   defaultTheme: 'callisto',
   defaultLanguage: 'en',
   colorSchemes: {
@@ -409,24 +409,24 @@ const config: SiteConfig = {
     { postRef: '', thumbnail: '' },
   ],
   contact: {
-    name: 'Alicia Sykes',
-    email: 'alicia@omg.lol',
-    website: 'https://aliciasykes.com',
+    name: 'Skye Fugate',
+    email: 'skye@fugate.dev',
+    website: 'https://skyefugate.com',
     socials: {
-      Twitter: 'Lissy_Sykes',
-      GitHub: 'Lissy93',
-      'Dev.to': 'Lissy93',
-      Mastodon: '@Lissy93',
-      LinkedIn: 'in/AliciaSykes',
-      Instagram: 'liss.sykes',
-      YouTube: 'AliciaSykes',
-      Reddit: 'lissy93',
-      StackOverflow: '979052/alicia',
-      KeyBase: 'AliciaSykes',
-      Facebook: 'Liss.Sykes',
-      PeerList: 'alicia',
-      CodersRank: 'lissy93',
-      'OMG.lol': 'alicia',
+      Twitter: '',
+      GitHub: 'skyefugate',
+      'Dev.to': '',
+      Mastodon: '',
+      LinkedIn: '',
+      Instagram: '',
+      YouTube: '',
+      Reddit: '',
+      StackOverflow: '',
+      KeyBase: '',
+      Facebook: '',
+      PeerList: '',
+      CodersRank: '',
+      'OMG.lol': '',
     },
     socialButtonLimit: 6,
     mailerConfig: {
@@ -476,32 +476,17 @@ const config: SiteConfig = {
 `,
   },
   about: {
-    intro: 'Just your average dev...',
+    intro: 'Software Developer & Tech Enthusiast',
     bio: [
-      "I'm Alicia, a London-based software engineer.",
+      "I'm Skye, a software developer passionate about building great digital experiences.",
 
-      `I have a particular interest in privacy-respecting software, as well as security.
-      I've carried out a few audits, and authored the initial versions of
-      <a href="https://github.com/Lissy93/personal-security-checklist">Personal Security Checklist</a>
-      and <a href="https://github.com/Lissy93/awesome-privacy">Awesome Privacy</a>.`,
+      "I enjoy working with modern web technologies and am always exploring new tools and frameworks to improve my craft.",
 
-      `I enjoy going to (<a href="https://notes.aliciasykes.com/p/0s5s3uOtKj">and sometimes winning!</a>) hackathons.
-      And if you're London-based, you'll probably have bumped into me at a tech meetup.`,
+      "When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or learning something new.",
 
-      `I love Linux, and (imo) have a neat
-      <a href="https://github.com/lissy93/dotfiles">dotfiles setup</a> which I'm always tweaking.
-      And I have a small homelab, that I'm using to learn more about system administration,
-      and host my own services to (attempt to) escape big tech.
-      I made <a href="https://github.com/Lissy93/dashy">dashboard app</a> for it.
-      `,
-
-      `For work, I'm a principal software engineer at <a href="https://and.digital/">AND.Digital</a>,
-      where I work across various client projects, help to upskill and mentor junior and mid-level
-      developers and ensure that the code we're delivering is the best it can be.`,
-
-      `Away from the keyboard, I like sports, hanging out with friends, and going to Church.`,
+      "Feel free to check out my projects and get in touch if you'd like to collaborate!",
     ],
-    picture: 'https://i.ibb.co/svxHFMD/alicia-sykes-3.jpg',
+    picture: 'https://i.ibb.co/svxHFMD/alicia-sykes-3.jpg', // You can replace this with your own photo
   },
   techStack: {
     backend: [
