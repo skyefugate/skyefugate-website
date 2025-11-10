@@ -5,7 +5,7 @@ const config: SiteConfig = {
   author: 'Skye Fugate',
   description: 'The personal website of Skye Fugate',
   source: 'https://github.com/skyefugate/skyefugate-website',
-  baseUrl: 'https://skyefugate.com',
+  baseUrl: 'https://fugate.dev',
   initialFeeds: [{ label: 'Notes', url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/blog.atom' }],
   additionalFeeds: [
     { label: 'Notes', url: 'https://notes.aliciasykes.com/feed' },
