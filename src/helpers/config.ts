@@ -167,6 +167,15 @@ const config: SiteConfig = {
       responsibilities: 'Performed in-house, on-site, and remote computer services as lead engineer on assigned projects. Worked on advanced Network, Security, and IAM rollouts for mid to large scale clients.',
       technologies: ['Network Security', 'IAM', 'Client Services', 'Security Analysis'],
     },
+    {
+      company: 'Micro Center',
+      companyUrl: 'https://microcenter.com/',
+      companyLogo: '',
+      jobTitle: 'Apple/Service Engineering Leader',
+      datesWorked: 'May 2018 - May 2019',
+      responsibilities: 'Diagnosed and repaired macOS, iOS, and Windows devices. Ensured KPIs including Customer Satisfaction, Profit and Loss, and Authorized Service Provider Metrics were met through collaboration with a team of 20+. iOS Repair Deployment Lead and Supervising/Training Technician.',
+      technologies: ['macOS', 'iOS', 'Windows', 'Device Repair', 'Team Leadership', 'Training'],
+    },
   ],
   projectComplimentaryData: [
     {
