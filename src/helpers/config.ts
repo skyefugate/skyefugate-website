@@ -124,7 +124,7 @@ const config: SiteConfig = {
   workExperience: [
     {
       company: 'Netsmart',
-      companyUrl: 'https://netsmart.com/',
+      companyUrl: 'https://ntst.com/',
       companyLogo: '/netsmart-logo.jpeg',
       jobTitle: 'Technology Architect - Plexus Enterprise Architecture',
       datesWorked: 'June 2025 - Present',
@@ -133,7 +133,7 @@ const config: SiteConfig = {
     },
     {
       company: 'Netsmart',
-      companyUrl: 'https://netsmart.com/',
+      companyUrl: 'https://ntst.com/',
       companyLogo: '/netsmart-logo.jpeg',
       jobTitle: 'Team Lead, Network and Infrastructure - Plexus Platforms',
       datesWorked: 'March 2024 - June 2025',
@@ -142,7 +142,7 @@ const config: SiteConfig = {
     },
     {
       company: 'Netsmart',
-      companyUrl: 'https://netsmart.com/',
+      companyUrl: 'https://ntst.com/',
       companyLogo: '/netsmart-logo.jpeg',
       jobTitle: 'Network Security Engineer - Enterprise Cloud Technologies',
       datesWorked: 'June 2022 - March 2024',
