@@ -3,6 +3,7 @@ import staticAdapter from '@sveltejs/adapter-static';
 import netlifyAdapter from '@sveltejs/adapter-netlify';
 import vercelAdapter from '@sveltejs/adapter-vercel';
 import nodeAdapter from '@sveltejs/adapter-node';
+import cloudflareAdapter from '@sveltejs/adapter-cloudflare';
 
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
@@ -16,6 +17,8 @@ if (process.env.DEPLOY_TARGET === 'NETLIFY') {
   selectedAdapter = nodeAdapter();
 } else if (process.env.DEPLOY_TARGET === 'STATIC') {
   selectedAdapter = staticAdapter();
+} else if (process.env.DEPLOY_TARGET === 'CLOUDFLARE') {
+  selectedAdapter = cloudflareAdapter();
 } else {
   selectedAdapter = autoAdapter();
 }
