@@ -42,7 +42,6 @@
     typeLineBreak(typeItInstance);
 
     typeWithVariableSpeed(typeItInstance, lines[3]);
-    typeItInstance.pause(500).move(-8).type(' free').pause(500).type(' and open source').pause(100).move(8);
     typeLineBreak(typeItInstance);
 
     typeWithVariableSpeed(typeItInstance, lines[4]);
