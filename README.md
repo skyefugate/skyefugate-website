@@ -86,8 +86,8 @@ My customizations and content are also available under the same MIT license.
 <!-- License + Copyright -->
 <p align="center">
   <i>Built with ❤️ using <a href="https://github.com/Lissy93/devolio">Devolio</a> by <a href="https://aliciasykes.com">Alicia Sykes</a></i><br>
-  <i>© <a href="https://fugate.dev">Skye Fugate</a> 2025</i><br>
-  <a href="https://github.com/skyefugate"><img src="https://i.ibb.co/4KtpYxb/octocat-clean-mini.png" /></a><br>
+  <i>© <a href="https://aliciasykes.com">Alicia Sykes</a> 2025 - Template licensed under MIT</i><br>
+  <a href="https://github.com/lissy93"><img src="https://i.ibb.co/4KtpYxb/octocat-clean-mini.png" /></a><br>
   <sup>Thanks for visiting :)</sup>
 </p>
 
