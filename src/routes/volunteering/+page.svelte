@@ -64,23 +64,19 @@
     <Heading level="h2" size="1.8rem">Volunteer Experience</Heading>
     
     <div class="hexagon-container">
-      {#each volunteerExperience as org, index}
-        <div class="hexagon-wrapper" class:offset={index % 2 === 1}>
-          <div class="hexagon">
-            <div class="hexagon-content">
-              <img src={org.organizationLogo} alt={org.organization} class="hex-logo" />
-              <h4>{org.organization}</h4>
-              <p class="hex-role">{org.role}</p>
-              <div class="hex-tech">
-                {#each org.technologies.slice(0, 2) as tech}
-                  <LangBadge language={tech} size={12} />
-                {/each}
-              </div>
-              <span class="hex-link">
-                {org.role}
-              </span>
-            </div>
+      {#each volunteerExperience as org}
+        <div class="hexagon-wrapper">
+          <img src={org.organizationLogo} alt={org.organization} class="hex-logo" />
+          <h4>{org.organization}</h4>
+          <p class="hex-role">{org.role}</p>
+          <div class="hex-tech">
+            {#each org.technologies.slice(0, 3) as tech}
+              <LangBadge language={tech} size={14} />
+            {/each}
           </div>
+          <span class="hex-link">
+            {org.role}
+          </span>
         </div>
       {/each}
     </div>
@@ -238,98 +234,50 @@
       }
     }
 
-    // Volunteer hexagons section
+    // Volunteer experience as clean cards
     &.volunteer-hexagons {
       grid-column-start: span 2;
       
       .hexagon-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
         margin-top: 2rem;
       }
       
       .hexagon-wrapper {
-        position: relative;
-        width: 200px;
-        height: 200px;
-        margin: 1rem;
-        
-        &.offset {
-          margin-top: 3rem;
-        }
-      }
-      
-      .hexagon {
-        width: 100%;
-        height: 100%;
         background: var(--card-background);
-        border: 2px solid var(--accent);
-        position: relative;
-        transform: rotate(30deg);
-        border-radius: 20px;
+        border: 1px solid var(--card-border);
+        border-radius: var(--curve-factor);
+        padding: 2rem;
+        text-align: center;
         transition: all 0.3s ease;
         
         &:hover {
-          transform: rotate(30deg) scale(1.05);
+          transform: translateY(-4px);
           border-color: var(--accent);
-          box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.3);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
-        
-        &::before,
-        &::after {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background: var(--card-background);
-          border: 2px solid var(--accent);
-          border-radius: 20px;
-          transition: all 0.3s ease;
-        }
-        
-        &::before {
-          transform: rotate(60deg);
-        }
-        
-        &::after {
-          transform: rotate(-60deg);
-        }
-        
-        &:hover::before,
-        &:hover::after {
-          border-color: var(--accent);
-        }
-      }
-      
-      .hexagon-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(-30deg);
-        text-align: center;
-        z-index: 10;
-        width: 80%;
         
         .hex-logo {
-          width: 40px;
-          height: 40px;
+          width: 60px;
+          height: 60px;
           border-radius: 50%;
           object-fit: contain;
-          margin-bottom: 0.5rem;
+          margin: 0 auto 1rem;
+          display: block;
         }
         
         h4 {
-          margin: 0.5rem 0;
-          font-size: 1rem;
+          margin: 0 0 0.5rem 0;
+          font-size: 1.3rem;
           color: var(--accent);
           font-weight: bold;
         }
         
         .hex-role {
-          margin: 0.25rem 0;
-          font-size: 0.8rem;
+          margin: 0 0 1rem 0;
+          font-size: 1rem;
           color: var(--foreground);
           opacity: 0.8;
         }
@@ -338,15 +286,15 @@
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
-          gap: 0.25rem;
-          margin: 0.5rem 0;
+          gap: 0.5rem;
+          margin: 1rem 0;
         }
         
         .hex-link {
           display: inline-block;
-          margin-top: 0.5rem;
+          margin-top: 1rem;
           color: var(--dimmed-text);
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           font-weight: 500;
         }
       }
