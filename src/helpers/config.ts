@@ -510,7 +510,6 @@ const config: SiteConfig = {
         language: 'HTML/CSS',
         projects: ['documentation-sites', 'landing-pages'],
       },
-    ],
       {
         language: 'Astro',
         projects: ['git-into-open-source'],
