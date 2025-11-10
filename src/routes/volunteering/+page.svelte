@@ -3,24 +3,41 @@
   import config from '$src/helpers/config';
 
   const { volunteerExperience } = config;
+  
+  const morePages = config.routeLinks.filter(
+    (link) => !['/volunteering', '/'].includes(link.route)
+  );
 </script>
 
-<section class="title">
-  <Heading level="h2" size="2.5rem">>Volunteering</Heading>
-</section>
+<!-- Page title -->
+<div class="heading">
+  <Heading level="h2" size="2.5rem">Volunteering</Heading>
+</div>
 
-<section class="intro">
-  <p><i>Community involvement and volunteer leadership</i></p>
-  <p>
-    Beyond my professional work, I'm passionate about giving back to the cybersecurity community. 
-    Through volunteer leadership roles, I help organize events, mentor others, and contribute to 
-    the growth of our industry's knowledge sharing and professional development.
-  </p>
-</section>
+<!-- Main content grid -->
+<div class="content">
+  <!-- Intro section -->
+  <section class="intro">
+    <i>Community involvement and volunteer leadership</i>
+    <p>
+      Beyond my professional work, I'm passionate about giving back to the cybersecurity community. 
+      Through volunteer leadership roles, I help organize events, mentor others, and contribute to 
+      the growth of our industry's knowledge sharing and professional development.
+    </p>
+  </section>
 
-<section class="volunteer-grid">
+  <!-- Navigation to other pages -->
+  <section class="navigation">
+    <div class="pages">
+      {#each morePages as page}
+        <a href={page.route} style={`--page-color: ${page.color};`}>{page.label}</a>
+      {/each}
+    </div>
+  </section>
+
+  <!-- Volunteer organizations -->
   {#each volunteerExperience as org}
-    <div class="org-card">
+    <section class="org-card">
       <div class="org-header">
         <h3>
           {#if org.organizationUrl}
@@ -50,130 +67,166 @@
           View Details →
         </a>
       </div>
-    </div>
+    </section>
   {/each}
-</section>
+</div>
 
 <style lang="scss">
   @import '$src/styles/media-queries.scss';
-  @import '$src/styles/dimensions.scss';
 
-  .title {
-    margin: 0 calc(5vw + 1rem);
+  .heading {
+    margin: 1rem calc(5vw + 1rem) 0;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
   }
 
-  .intro {
-    background: var(--card-background);
-    border: var(--card-border);
+  .content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    max-width: 1200px;
+    @include laptop-up {
+      grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    }
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    padding: 1rem;
+    width: 95vw;
+    margin: 0 auto;
+  }
+
+  section {
+    padding: 1rem;
     border-radius: var(--curve-factor);
-    margin: 1rem calc(5vw + 1rem);
-    padding: 1.5rem;
-
-    p {
-      margin: 0 0 1rem 0;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: var(--foreground);
-      font-family: RedHatText;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
+    background: var(--card-background);
+    
+    // Intro section - spans 2 columns like about page
+    &.intro {
+      grid-column-start: span 2;
       i {
         opacity: 0.8;
         color: var(--accent);
       }
+      p {
+        margin: 1rem 0;
+        font-size: 1.25rem;
+        line-height: 1.8rem;
+        font-family: RedHatText;
+        color: var(--foreground);
+      }
     }
-  }
 
-  .volunteer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
-    gap: var(--grid-item-spacing);
-    padding: var(--grid-item-spacing);
-    margin: var(--grid-item-spacing) 5vw;
-  }
-
-  .org-card {
-    background: var(--card-background);
-    border: var(--card-border);
-    border-radius: var(--curve-factor);
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-    }
-  }
-
-  .org-header {
-    margin-bottom: 1rem;
-
-    h3 {
-      margin: 0;
-      font-size: 1.4rem;
-      color: var(--accent);
+    // Navigation section - similar to about page's picture section
+    &.navigation {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       
-      a {
-        color: var(--accent);
-        text-decoration: none;
+      .pages {
+        opacity: 0.9;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         &:hover {
-          text-decoration: underline;
+          opacity: 1;
+        }
+        a {
+          color: var(--page-color, var(--accent));
+          border-radius: var(--curve-factor);
+          padding: 0.25rem 0.5rem;
+          margin: 0.5rem;
+          font-weight: bold;
+          text-decoration: none;
+          transition: all ease-in-out 0.2s;
+          min-width: 5rem;
+          text-align: center;
+          border: 1px solid var(--page-color, var(--accent));
+          &:hover {
+            color: var(--background);
+            background: var(--page-color, var(--accent));
+          }
         }
       }
     }
 
-    h4 {
-      margin: 0.25rem 0;
-      font-size: 1.1rem;
-      color: var(--foreground);
-      font-weight: 500;
-    }
+    // Organization cards
+    &.org-card {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-2px);
+      }
 
-    .dates {
-      margin: 0;
-      color: var(--dimmed-text);
-      font-size: 0.9rem;
-    }
-  }
+      .org-header {
+        margin-bottom: 1rem;
 
-  .summary {
-    margin: 1rem 0;
-    line-height: 1.6;
-    color: var(--foreground);
-  }
+        h3 {
+          margin: 0;
+          font-size: 1.4rem;
+          color: var(--accent);
+          
+          a {
+            color: var(--accent);
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
 
-  .highlights {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1rem 0;
+        h4 {
+          margin: 0.25rem 0;
+          font-size: 1.1rem;
+          color: var(--foreground);
+          font-weight: 500;
+        }
 
-    .highlight-tag {
-      background: var(--accent);
-      color: var(--background);
-      padding: 0.25rem 0.75rem;
-      border-radius: var(--curve-factor);
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-  }
+        .dates {
+          margin: 0;
+          color: var(--dimmed-text);
+          font-size: 0.9rem;
+        }
+      }
 
-  .actions {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--card-border);
-  }
+      .summary {
+        margin: 1rem 0;
+        line-height: 1.6;
+        color: var(--foreground);
+        font-family: RedHatText;
+      }
 
-  .details-link {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
+      .highlights {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
 
-    &:hover {
-      text-decoration: underline;
+        .highlight-tag {
+          background: var(--accent);
+          color: var(--background);
+          padding: 0.25rem 0.75rem;
+          border-radius: var(--curve-factor);
+          font-size: 0.8rem;
+          font-weight: 500;
+        }
+      }
+
+      .actions {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--card-border);
+      }
+
+      .details-link {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 </style>
