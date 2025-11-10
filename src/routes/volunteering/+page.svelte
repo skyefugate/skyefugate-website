@@ -1,117 +1,110 @@
 <script lang="ts">
   import Heading from '$src/components/Heading.svelte';
-  import { t } from '$src/store/Language';
   import config from '$src/helpers/config';
 
   const { volunteerExperience } = config;
 </script>
 
-<!-- Page title -->
-<div class="heading">
+<section class="title">
   <Heading level="h2" size="2.5rem">Volunteering</Heading>
-</div>
+</section>
 
-<!-- Volunteering Overview -->
-<div class="content">
-  <section class="intro">
-    <i>Community involvement and volunteer leadership</i>
-    <p class="bio-line">
-      Beyond my professional work, I'm passionate about giving back to the cybersecurity community. 
-      Through volunteer leadership roles, I help organize events, mentor others, and contribute to 
-      the growth of our industry's knowledge sharing and professional development.
-    </p>
-  </section>
+<section class="intro">
+  <p><i>Community involvement and volunteer leadership</i></p>
+  <p>
+    Beyond my professional work, I'm passionate about giving back to the cybersecurity community. 
+    Through volunteer leadership roles, I help organize events, mentor others, and contribute to 
+    the growth of our industry's knowledge sharing and professional development.
+  </p>
+</section>
 
-  <section class="organizations">
-    {#each volunteerExperience as org}
-      <div class="org-card">
-        <div class="org-header">
-          {#if org.organizationLogo}
-            <img src={org.organizationLogo} alt="{org.organization} logo" class="org-logo" />
-          {/if}
-          <div class="org-info">
-            <h3>
-              {#if org.organizationUrl}
-                <a href={org.organizationUrl} target="_blank" rel="noopener noreferrer">
-                  {org.organization}
-                </a>
-              {:else}
-                {org.organization}
-              {/if}
-            </h3>
-            <h4>{org.role}</h4>
-            <p class="dates">{org.datesWorked}</p>
-          </div>
-        </div>
-        
-        <p class="summary">{org.responsibilities}</p>
-        
-        {#if org.achievements && org.achievements.length > 0}
-          <div class="highlights">
-            {#each org.achievements.slice(0, 3) as achievement}
-              <span class="highlight-tag">{achievement}</span>
-            {/each}
-          </div>
+<section class="volunteer-grid">
+  {#each volunteerExperience as org}
+    <div class="org-card">
+      <div class="org-header">
+        {#if org.organizationLogo}
+          <img src={org.organizationLogo} alt="{org.organization} logo" class="org-logo" />
         {/if}
-        
-        <div class="actions">
-          <a href="/volunteering/{org.organization.toLowerCase().replace(/\s+/g, '')}" class="details-link">
-            View Details →
-          </a>
+        <div class="org-info">
+          <h3>
+            {#if org.organizationUrl}
+              <a href={org.organizationUrl} target="_blank" rel="noopener noreferrer">
+                {org.organization}
+              </a>
+            {:else}
+              {org.organization}
+            {/if}
+          </h3>
+          <h4>{org.role}</h4>
+          <p class="dates">{org.datesWorked}</p>
         </div>
       </div>
-    {/each}
-  </section>
-</div>
+      
+      <p class="summary">{org.responsibilities}</p>
+      
+      {#if org.achievements && org.achievements.length > 0}
+        <div class="highlights">
+          {#each org.achievements.slice(0, 3) as achievement}
+            <span class="highlight-tag">{achievement}</span>
+          {/each}
+        </div>
+      {/if}
+      
+      <div class="actions">
+        <a href="/volunteering/{org.organization.toLowerCase().replace(/\s+/g, '')}" class="details-link">
+          View Details →
+        </a>
+      </div>
+    </div>
+  {/each}
+</section>
 
 <style lang="scss">
   @import '$src/styles/media-queries.scss';
+  @import '$src/styles/dimensions.scss';
 
-  .heading {
-    margin: 1rem calc(5vw + 1rem) 0;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
+  .title {
+    margin: 0 calc(5vw + 1rem);
   }
 
-  .content {
-    max-width: 1200px;
-    width: 95vw;
-    margin: 0 auto;
-    padding: 1rem;
-  }
-
-  section {
-    padding: 1rem;
-    border-radius: var(--curve-factor);
+  .intro {
     background: var(--card-background);
-    margin-bottom: 1rem;
+    border: var(--card-border);
+    border-radius: var(--curve-factor);
+    margin: 1rem calc(5vw + 1rem);
+    padding: 1.5rem;
 
-    &.intro {
+    p {
+      margin: 0 0 1rem 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--foreground);
+      font-family: RedHatText;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
       i {
         opacity: 0.8;
-      }
-      :global(p) {
-        margin: 1rem 0;
-        font-size: 1.25rem;
-        line-height: 1.8rem;
-        font-family: RedHatText;
+        color: var(--accent);
       }
     }
   }
 
-  .organizations {
+  .volunteer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 1.5rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
+    gap: var(--grid-item-spacing);
+    padding: var(--grid-item-spacing);
+    margin: var(--grid-item-spacing) 5vw;
   }
 
   .org-card {
     background: var(--card-background);
+    border: var(--card-border);
     border-radius: var(--curve-factor);
     padding: 1.5rem;
-    border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
     transition: all 0.3s ease;
 
     &:hover {
@@ -192,7 +185,7 @@
   .actions {
     margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+    border-top: 1px solid var(--card-border);
   }
 
   .details-link {
