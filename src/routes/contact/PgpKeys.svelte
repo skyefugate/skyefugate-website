@@ -15,12 +15,12 @@
     {
       label: 'PGP',
       value: 'FEDB 68F5 5C02 83A7',
-      link: 'https://keybase.io/aliciasykes/pgp_keys.asc?fingerprint=0688f8d34587d954e9e51fb8fedb68f55c0283a7',
+    pgpKeyLink: 'https://keybase.io/skyefugate/pgp_keys.asc',
     },
     {
       label: 'Email',
-      value: 'alicia at omg dot lol',
-      link: 'mailto:alicia@omg.lol',
+      value: 'skye at fugate dot dev',
+      link: 'mailto:skye@fugate.dev',
     },
     {
       label: 'Matrix',

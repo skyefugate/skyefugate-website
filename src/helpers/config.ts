@@ -365,7 +365,7 @@ const config: SiteConfig = {
       GitHub: 'skyefugate',
       'Dev.to': '',
       Mastodon: '',
-      LinkedIn: '',
+      LinkedIn: 'in/skye-f',
       Instagram: '',
       YouTube: '',
       Reddit: '',
@@ -383,7 +383,7 @@ const config: SiteConfig = {
       user_id: 'user_K6F041q1dQvz8SJLSOZCR',
       template_params: {},
     },
-    pgpKeyLink: 'https://keybase.io/aliciasykes/pgp_keys.asc?fingerprint=0688f8d34587d954e9e51fb8fedb68f55c0283a7',
+    pgpKeyLink: 'https://keybase.io/skyefugate/pgp_keys.asc',
     pgpPublicKey: `-----BEGIN PGP PUBLIC KEY BLOCK-----
       mQENBFqbwpsBCACxoSZKSkr6zPUSVijbeFV9c7KphqXJxzJqKlWQbMOFL+rj52+Q
       F/wy16+Jze4seOGUNA9OiOcpM/YhSQoeFOBPdj5hOc9IXOTx86bhYi3+84D9o1cW
