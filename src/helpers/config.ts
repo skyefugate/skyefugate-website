@@ -64,6 +64,14 @@ const config: SiteConfig = {
       route: '/about',
       color: 'var(--accent-4, #1de691)',
       description: 'Bio and professional experience',
+      subPages: [
+        {
+          label: 'Volunteering',
+          route: '/volunteering',
+          color: 'var(--accent-4, #1de691)',
+          description: 'Community involvement and volunteer leadership',
+        },
+      ],
     },
   ],
   footerInfo: {
@@ -175,6 +183,18 @@ const config: SiteConfig = {
       datesWorked: 'May 2018 - May 2019',
       responsibilities: 'Diagnosed and repaired macOS, iOS, and Windows devices. Ensured KPIs including Customer Satisfaction, Profit and Loss, and Authorized Service Provider Metrics were met through collaboration with a team of 20+. iOS Repair Deployment Lead and Supervising/Training Technician.',
       technologies: ['macOS', 'iOS', 'Windows', 'Device Repair', 'Team Leadership', 'Training'],
+    },
+  ],
+  volunteerExperience: [
+    {
+      organization: 'SecKC',
+      organizationUrl: 'https://seckc.org/',
+      organizationLogo: '',
+      role: 'Director of Stuff & Things',
+      datesWorked: 'August 2016 - Present',
+      responsibilities: 'Plan and schedule InfoSec events with a monthly attendance of 200+ through collaboration with various teams. Ensure that live production for events at various venues meets quality standards. Manage a team of 50+ volunteers to ensure events are executed to attendees satisfaction.',
+      achievements: ['11 Time Speaker', 'Monthly events with 200+ attendance', 'Manage 50+ volunteers'],
+      technologies: ['Event Management', 'Team Leadership', 'Public Speaking', 'InfoSec Community'],
     },
   ],
   projectComplimentaryData: [
