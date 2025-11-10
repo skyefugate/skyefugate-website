@@ -567,10 +567,6 @@ const config: SiteConfig = {
       'Nmap', 'OWASPZAP', 'BurpSuite', 'Wireshark',
     ],
   },
-  plausible: {
-    scriptSrc: 'https://no-track.as93.net/js/script.js',
-    domain: 'skyefugate.com',
-  },
 };
 
 export default config;
