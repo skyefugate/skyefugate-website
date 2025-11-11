@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>%sveltekit.error.message%</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #0a0a0a;
+        color: #ff531a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        text-align: center;
+      }
+      h1 { font-size: 3rem; margin: 0; }
+      .status { font-size: 5rem; margin: 0.5rem 0; }
+      img { max-width: 400px; width: 100%; border-radius: 8px; margin: 2rem 0; }
+    </style>
+  </head>
+  <body>
+    <div class="status">%sveltekit.status%</div>
+    <h1>%sveltekit.error.message%</h1>
+    <img src="https://http.cat/%sveltekit.status%.jpg" alt="HTTP %sveltekit.status% Cat" />
+    <p>This is sad :'(</p>
+  </body>
+</html>
