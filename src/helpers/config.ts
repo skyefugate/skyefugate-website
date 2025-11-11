@@ -552,8 +552,6 @@ const config: SiteConfig = {
       },
     ],
     mobile: [
-    ],
-    mobile: [
       {
         language: 'iOS/macOS',
         projects: ['device-management', 'enterprise-apps'],
