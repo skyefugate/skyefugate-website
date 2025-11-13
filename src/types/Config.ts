@@ -47,7 +47,6 @@ export interface SiteConfig {
     licenseLink: string;
     copyright: boolean;
   };
-  githubUser: string; // GitHub username to fetch projects from
   workExperience: {
     company: string;
     companyUrl: string;

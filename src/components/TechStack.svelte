@@ -34,7 +34,7 @@
             <div class="stack-projects">
               {#each ts.projects as project}
                 <a class="repo-link" target="_blank" rel="noreferrer"
-                  href="https://github.com/{config.githubUser}/{project}">
+                  href="https://github.com/{config.contact.socials.GitHub}/{project}">
                   <Icon name="github2" size={20} />
                   <span>{project}</span>
                 </a>
