@@ -12,6 +12,7 @@ export interface TechStackItem {
 export interface SiteConfig {
   title: string; // Website title / name
   description: string; // Website description
+  author: string; // Site author name
   source: string; // Link to project source (e.g. on GitHub)
   baseUrl: string; // The URL where the site is hosted
   loadIndex?: boolean; // Weather to skip to /index instead of /home
@@ -34,6 +35,8 @@ export interface SiteConfig {
     subPages?: {
       label: string;
       route: string;
+      color?: string;
+      description?: string;
     }[];
   }[];
   footerInfo: {
@@ -59,6 +62,20 @@ export interface SiteConfig {
       description: string;
     }[];
     technologies?: string[];
+  }[];
+  volunteerExperience: {
+    organization: string;
+    organizationUrl: string;
+    organizationLogo: string;
+    role: string;
+    datesWorked: string;
+    responsibilities?: string;
+    achievements?: string[];
+    technologies?: string[];
+    projects?: {
+      name: string;
+      description: string;
+    }[];
   }[];
   projectComplimentaryData: {
     name: string; // GitHub repo name
