@@ -1,9 +1,9 @@
 import type { SiteConfig } from '$src/types/Config';
 
 const config: SiteConfig = {
-  title: 'SkyeFugate',
-  author: 'SkyeFugate',
-  description: 'The personal website of SkyeFugate',
+  title: 'Skye Fugate',
+  author: 'Skye Fugate',
+  description: 'The personal website of Skye Fugate',
   source: 'https://github.com/skyefugate/skyefugate-website',
   baseUrl: 'https://fugate.dev',
   initialFeeds: [],
