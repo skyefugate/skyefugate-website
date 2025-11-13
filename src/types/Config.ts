@@ -31,6 +31,10 @@ export interface SiteConfig {
     label: string;
     color?: string;
     description?: string;
+    subPages?: {
+      label: string;
+      route: string;
+    }[];
   }[];
   footerInfo: {
     // Meta and legal info to display in the footer
