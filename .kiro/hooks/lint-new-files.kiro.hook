@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Lint New Files",
+  "description": "Automatically runs linting on any newly created files to ensure code quality and consistency",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/*"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "New files have been created. Please run the appropriate linter (ESLint for JS/TS files, Prettier for formatting) on the newly created files and report any linting errors or warnings that need to be fixed. If the files pass linting, confirm they are compliant."
+  }
+}
