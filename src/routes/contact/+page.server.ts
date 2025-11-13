@@ -73,25 +73,30 @@ export const _getGithubInfo = async (username: string) => {
 };
 
 export const _getStackOverflowInfo = async (username: string) => {
-  const userId = username.replace(/\D/g, '');
-  const stackOverflowEndpoint = `https://api.stackexchange.com/2.2/users/${userId}?site=stackoverflow`;
-  return await fetch(stackOverflowEndpoint)
-    .then((res) => res.json())
-    .then((stats) => {
-      if (stats.items && stats.items[0]) {
-        const { reputation, creation_date } = stats.items[0];
-        const metrics: SocialMetric[] = [
-          { label: 'Rep', value: reputation.toLocaleString() },
-          {
-            label: 'Joined',
-            value: new Date(creation_date * 1000).getFullYear(),
-          },
-        ];
-        return metrics;
-      }
-      return [];
-    })
-    .catch(() => []);
+  if (!username) return [];
+  
+  try {
+    // First, search for the user by display name
+    const searchEndpoint = `https://api.stackexchange.com/2.2/users?inname=${username}&site=stackoverflow`;
+    const searchRes = await fetch(searchEndpoint);
+    const searchData = await searchRes.json();
+    
+    if (searchData.items && searchData.items.length > 0) {
+      const user = searchData.items[0];
+      const { reputation, creation_date } = user;
+      const metrics: SocialMetric[] = [
+        { label: 'Rep', value: reputation.toLocaleString() },
+        {
+          label: 'Joined',
+          value: new Date(creation_date * 1000).getFullYear(),
+        },
+      ];
+      return metrics;
+    }
+    return [];
+  } catch {
+    return [];
+  }
 };
 
 export const _getDevToInfo = async (username: string) => {
@@ -171,6 +176,185 @@ export const _getKeybaseInfo = async (username: string) => {
     .catch(() => []);
 };
 
+export const _getYouTubeInfo = async (username: string) => {
+  if (!username) return [];
+  
+  // YouTube Data API requires API key, so we'll use a simpler approach
+  // This is a basic scraping approach - in production you'd want YouTube Data API
+  try {
+    const channelUrl = `https://www.youtube.com/@${username}`;
+    const response = await fetch(channelUrl);
+    const html = await response.text();
+    
+    // Basic regex to extract subscriber count (this is fragile and for demo only)
+    const subMatch = html.match(/"subscriberCountText":\{"simpleText":"([^"]+)"/);
+    const videoMatch = html.match(/"videosCountText":\{"runs":\[\{"text":"([^"]+)"/);
+    
+    const metrics: SocialMetric[] = [];
+    if (subMatch) {
+      metrics.push({ label: 'Subscribers', value: subMatch[1] });
+    }
+    if (videoMatch) {
+      metrics.push({ label: 'Videos', value: videoMatch[1] });
+    }
+    
+    return metrics;
+  } catch {
+    return [];
+  }
+};
+
+export const _getLinkedInInfo = async (username: string) => {
+  if (!username) return [];
+  
+  try {
+    const profileUrl = `https://www.linkedin.com/${username}`;
+    const response = await fetch(profileUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+        'Sec-Ch-Ua-Mobile': '?0',
+        'Sec-Ch-Ua-Platform': '"Windows"',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-User': '?1',
+        'Upgrade-Insecure-Requests': '1',
+      },
+    });
+    
+    if (response.ok) {
+      const html = await response.text();
+      
+      // More aggressive patterns to find 1k+ followers
+      const patterns = [
+        // Look for "1,000+ followers" or "1K+ followers" 
+        /([\d,]+K?\+?)\s+followers?/gi,
+        /([\d,]+)\s+followers?/gi,
+        // Look in JSON-LD or structured data
+        /"followersCount[^"]*":\s*"?(\d+[^"]*)"?/gi,
+        // Look for aria-labels or data attributes
+        /aria-label="[^"]*(\d+[^"]*)\s+followers?[^"]*"/gi,
+        // Look for text patterns with numbers
+        /(\d+(?:,\d+)*(?:\.\d+)?[KMB]?\+?)\s*(?:<[^>]*>)?\s*followers?/gi,
+        // Look in meta tags
+        /content="[^"]*(\d+[^"]*)\s+followers?[^"]*"/gi,
+        // Look for specific LinkedIn patterns
+        /follower-count[^>]*>([^<]+)</gi,
+        /followers[^>]*>([^<]*\d[^<]*)</gi,
+      ];
+      
+      const metrics: SocialMetric[] = [];
+      
+      // Try each pattern
+      for (const pattern of patterns) {
+        const matches = [...html.matchAll(pattern)];
+        for (const match of matches) {
+          if (match[1] && match[1].trim()) {
+            const value = match[1].trim();
+            // Skip if it's just a year or other non-follower number
+            if (!value.match(/^\d{4}$/) && value.match(/[\d,KMB+]/)) {
+              metrics.push({ label: 'Followers', value });
+              break;
+            }
+          }
+        }
+        if (metrics.length > 0) break;
+      }
+      
+      // Also try connections patterns
+      const connectionPatterns = [
+        /([\d,]+K?\+?)\s+connections?/gi,
+        /([\d,]+)\s+connections?/gi,
+        /(\d+(?:,\d+)*(?:\.\d+)?[KMB]?\+?)\s*(?:<[^>]*>)?\s*connections?/gi,
+      ];
+      
+      for (const pattern of connectionPatterns) {
+        const matches = [...html.matchAll(pattern)];
+        for (const match of matches) {
+          if (match[1] && match[1].trim()) {
+            const value = match[1].trim();
+            if (!value.match(/^\d{4}$/) && value.match(/[\d,KMB+]/)) {
+              metrics.push({ label: 'Connections', value });
+              break;
+            }
+          }
+        }
+        if (metrics.length >= 2) break;
+      }
+      
+      // If we found metrics, return them
+      if (metrics.length > 0) {
+        return metrics;
+      }
+      
+      // Fallback
+      metrics.push({ label: 'Profile', value: 'Active' });
+      return metrics;
+    }
+    return [];
+  } catch {
+    return [];
+  }
+};
+
+export const _getInstagramInfo = async (username: string) => {
+  if (!username) return [];
+  
+  try {
+    // Instagram also blocks scraping, but we can try
+    const profileUrl = `https://www.instagram.com/${username}/`;
+    const response = await fetch(profileUrl);
+    
+    if (response.ok) {
+      const html = await response.text();
+      
+      // Try to extract follower count from meta tags or JSON
+      const followersMatch = html.match(/"edge_followed_by":\{"count":(\d+)\}/);
+      const postsMatch = html.match(/"edge_owner_to_timeline_media":\{"count":(\d+)\}/);
+      
+      const metrics: SocialMetric[] = [];
+      if (followersMatch) {
+        metrics.push({ label: 'Followers', value: parseInt(followersMatch[1]).toLocaleString() });
+      }
+      if (postsMatch) {
+        metrics.push({ label: 'Posts', value: postsMatch[1] });
+      }
+      
+      return metrics;
+    }
+    return [];
+  } catch {
+    return [];
+  }
+};
+
+export const _getPeerListInfo = async (username: string) => {
+  if (!username) return [];
+  
+  try {
+    const peerlistUrl = `https://peerlist.io/${username}`;
+    const response = await fetch(peerlistUrl);
+    const html = await response.text();
+    
+    // Basic extraction - this would need refinement
+    const followersMatch = html.match(/(\d+)\s+followers/i);
+    
+    const metrics: SocialMetric[] = [];
+    if (followersMatch) {
+      metrics.push({ label: 'Followers', value: followersMatch[1] });
+    }
+    
+    return metrics;
+  } catch {
+    return [];
+  }
+};
+
 export const load = async () => {
   const {
     // Get usernames from config
@@ -182,6 +366,10 @@ export const load = async () => {
     CodersRank: codersRankUn,
     Mastodon: mastodonUn,
     KeyBase: keybaseUn,
+    YouTube: youtubeUn,
+    PeerList: peerlistUn,
+    LinkedIn: linkedinUn,
+    Instagram: instagramUn,
   } = config.contact.socials;
   // Trigger fetch stats for each social
   const [
@@ -193,6 +381,10 @@ export const load = async () => {
     codersrank,
     mastodon,
     keybase,
+    youtube,
+    peerlist,
+    linkedin,
+    instagram,
   ] = await Promise.all([
     _getTwitterInfo(twitterUn),
     _getRedditInfo(redditUn),
@@ -202,6 +394,10 @@ export const load = async () => {
     _getCodersRankInfo(codersRankUn),
     _getMastodonInfo(mastodonUn),
     _getKeybaseInfo(keybaseUn),
+    _getYouTubeInfo(youtubeUn),
+    _getPeerListInfo(peerlistUn),
+    _getLinkedInInfo(linkedinUn),
+    _getInstagramInfo(instagramUn),
   ]);
   return {
     props: {
@@ -213,6 +409,10 @@ export const load = async () => {
       codersrank,
       mastodon,
       keybase,
+      youtube,
+      peerlist,
+      linkedin,
+      instagram,
     },
   };
 };

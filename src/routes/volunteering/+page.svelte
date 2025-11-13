@@ -70,7 +70,7 @@
           <h4>{org.organization}</h4>
           <p class="hex-role">{org.role}</p>
           <div class="hex-tech">
-            {#each org.technologies.slice(0, 3) as tech}
+            {#each (org.technologies || []).slice(0, 3) as tech}
               <LangBadge language={tech} size={14} />
             {/each}
           </div>

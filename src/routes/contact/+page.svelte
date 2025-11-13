@@ -12,11 +12,11 @@
   const { contact } = config;
 
   // Dynamically fetched data (social metrics)
-  export let data;
+  export let data: any;
 
   // Append usernames, and (if available) metrics to available socials
   let socials: UserSocial[] = socialNetworks
-    .map((social, index) => {
+    .map((social) => {
       const network: typeof SupportedSocials[number] = social.name;
       const metrics =
         data?.props[social.name.toLowerCase().replace(/\W/g, '')] || [];
@@ -54,7 +54,9 @@
     {/if}
   </div>
   <EmailForm />
-  <PGPKeys />
+  {#if config.contact.pgpKeyLink || config.contact.pgpPublicKey}
+    <PGPKeys />
+  {/if}
 </section>
 
 <style lang="scss">

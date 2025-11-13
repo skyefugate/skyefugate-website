@@ -75,7 +75,7 @@
     itemsToShow = 20;
   };
 
-  const toggleShowFilters = (e: any) => {
+  const toggleShowFilters = () => {
     showFilters = !showFilters;
   };
 

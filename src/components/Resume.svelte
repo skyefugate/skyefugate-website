@@ -2,9 +2,7 @@
   import config from '$src/helpers/config';
   import Heading from '$src/components/Heading.svelte';
   import Icon from '$src/components/Icon.svelte';
-  import Button from '$src/components/Button.svelte';
-
-  const { workExperience } = config; 
+  import Button from '$src/components/Button.svelte'; 
 
   </script>
 
@@ -12,7 +10,7 @@
 
 <p>
   My curriculum vitae can be viewed at
-  <a href="https://cv.aliciasykes.com" target="_blank">cv.aliciasykes.com</a>
+  <a href="https://cv.skyefugate.com" target="_blank" rel="noreferrer">cv.skyefugate.com</a>
 </p>
 
 <p>A shortened PDF version can be downloaded below ↓</p>

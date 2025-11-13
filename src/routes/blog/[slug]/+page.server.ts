@@ -3,8 +3,8 @@ import type { PageServerLoad } from './$types';
 
 export const prerender = true;
 
-export function load(pageData: PageServerLoad) {
-  const slug = pageData.params.slug;
+export function load({ params }: { params: { slug: string } }) {
+  const slug = params.slug;
   if (slug === '404') throw error(404);
 
   return {

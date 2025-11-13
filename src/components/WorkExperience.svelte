@@ -2,7 +2,6 @@
   import config from '$src/helpers/config';
   import Heading from '$src/components/Heading.svelte';
   import LangBadge from '$src/components/LangBadge.svelte';
-  import Icon from '$src/components/Icon.svelte';
 
   const { workExperience } = config; 
 

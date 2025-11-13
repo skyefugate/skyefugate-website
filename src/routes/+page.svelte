@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { config } from '$src/store/BlogStore';
-  import Loading from '$src/components/Loading.svelte';
   import Heading from '$src/components/Heading.svelte';
   import AnimatedHero from '$src/components/AnimatedHero.svelte';
   import { socialNetworks } from '$src/helpers/constants';
@@ -11,8 +10,6 @@
 
   const { routeLinks } = config;
   const homePageLinks = routeLinks.filter((rl) => rl.route !== '/');
-
-  let showLoader = false;
 
   const userSocials = Object.keys(config.contact.socials);
   const limit = config.contact.socialButtonLimit;
