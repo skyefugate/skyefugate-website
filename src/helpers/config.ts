@@ -433,11 +433,8 @@ const config: SiteConfig = {
       user_id: 'user_K6F041q1dQvz8SJLSOZCR',
       template_params: {},
     },
-    pgpKeyLink: 'https://keybase.io/skyefugate/pgp_keys.asc',
-    pgpPublicKey: `-----BEGIN PGP PUBLIC KEY BLOCK-----
-Your actual PGP key from keybase.io/skyefugate goes here
-      -----END PGP PUBLIC KEY BLOCK-----
-`,
+    pgpKeyLink: '',
+    pgpPublicKey: '',
   },
   about: {
     intro: 'Enterprise Technology Architect & InfoSec Community Builder',
