@@ -22,12 +22,6 @@
       value: 'skye at fugate dot dev',
       link: 'mailto:skye@fugate.dev',
     },
-    {
-      label: 'Matrix',
-      value: '@lissy93:matrix.org',
-      link: 'https://matrix.to/#/@lissy93:matrix.org',
-    },
-    { label: 'Signal', value: 'trusted contacts only', link: '' },
   ];
 </script>
 

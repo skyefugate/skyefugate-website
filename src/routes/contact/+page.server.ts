@@ -121,10 +121,20 @@ export const _getCodersRankInfo = async (username: string) => {
 };
 
 export const _getMastodonInfo = async (username: string) => {
-  const mastodonEndpoint = `https://mastodon.social/api/v1/accounts/001032965`;
-  return await fetch(mastodonEndpoint)
-    .then((res) => res.json())
-    .then((stats) => {
+  if (!username) return [];
+  
+  // First lookup the user ID by username
+  const lookupEndpoint = `https://mastodon.social/api/v1/accounts/lookup?acct=${username}`;
+  try {
+    const lookupRes = await fetch(lookupEndpoint);
+    const userData = await lookupRes.json();
+    
+    if (userData && userData.id) {
+      // Now get the account stats using the ID
+      const accountEndpoint = `https://mastodon.social/api/v1/accounts/${userData.id}`;
+      const accountRes = await fetch(accountEndpoint);
+      const stats = await accountRes.json();
+      
       if (stats) {
         const { followers_count, created_at } = stats;
         const metrics: SocialMetric[] = [
@@ -133,9 +143,11 @@ export const _getMastodonInfo = async (username: string) => {
         ];
         return metrics;
       }
-      return [];
-    })
-    .catch(() => []);
+    }
+    return [];
+  } catch {
+    return [];
+  }
 };
 
 export const _getKeybaseInfo = async (username: string) => {

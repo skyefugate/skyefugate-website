@@ -15,12 +15,14 @@
   export let data;
 
   // Append usernames, and (if available) metrics to available socials
-  let socials: UserSocial[] = socialNetworks.map((social, index) => {
-    const network: typeof SupportedSocials[number] = social.name;
-    const metrics =
-      data?.props[social.name.toLowerCase().replace(/\W/g, '')] || [];
-    return { ...social, user: contact.socials[network], metrics };
-  });
+  let socials: UserSocial[] = socialNetworks
+    .map((social, index) => {
+      const network: typeof SupportedSocials[number] = social.name;
+      const metrics =
+        data?.props[social.name.toLowerCase().replace(/\W/g, '')] || [];
+      return { ...social, user: contact.socials[network], metrics };
+    })
+    .filter(social => social.user && social.user.trim() !== '');
 
   // Limit number of socials to display
   let numSocialsToDisplay = contact.socialButtonLimit || 6;
