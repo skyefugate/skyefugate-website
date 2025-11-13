@@ -1,44 +1,13 @@
 import type { SiteConfig } from '$src/types/Config';
 
 const config: SiteConfig = {
-  title: 'Skye Fugate',
-  author: 'Skye Fugate',
-  description: 'The personal website of Skye Fugate',
+  title: 'SkyeFugate',
+  author: 'SkyeFugate',
+  description: 'The personal website of SkyeFugate',
   source: 'https://github.com/skyefugate/skyefugate-website',
   baseUrl: 'https://fugate.dev',
-  initialFeeds: [{ label: 'Notes', url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/blog.atom' }],
-  additionalFeeds: [
-    { label: 'Notes', url: 'https://notes.aliciasykes.com/feed' },
-    {
-      label: 'Dev.to',
-      url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/dev-to.atom',
-    },
-    {
-      label: 'BlogSpot',
-      url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/blogger.atom',
-    },
-    {
-      label: 'GitHub',
-      url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/github.atom',
-    },
-    {
-      label: 'StackOverflow',
-      url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/stackoverflow.atom',
-    },
-    // { label: 'Twitter', url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/twitter.atom' },
-    {
-      label: 'Reddit',
-      url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/reddit.atom',
-    },
-    {
-      label: 'Mastodon',
-      url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/mastodon.atom',
-    },
-    {
-      label: 'YouTube',
-      url: 'https://raw.githubusercontent.com/Lissy93/feeds/main/youtube.atom',
-    },
-  ],
+  initialFeeds: [],
+  additionalFeeds: [],
 
   routeLinks: [
     { label: 'Home', route: '/', color: 'var(--accent-1, #ff0099)' },
@@ -76,11 +45,11 @@ const config: SiteConfig = {
     },
   ],
   footerInfo: {
-    author: 'Alicia Sykes',
-    authorSite: 'https://github.com/lissy93',
-    license: 'MIT',
+    author: '',
+    authorSite: '',
+    license: '',
     licenseLink: '',
-    copyright: true,
+    copyright: false,
   },
   githubUser: 'skyefugate',
   defaultTheme: 'callisto',
@@ -416,15 +385,15 @@ const config: SiteConfig = {
       'Dev.to': 'skyefugate',
       Mastodon: 'skyefugate',
       LinkedIn: 'in/skye-f',
-      Instagram: '',
+      Instagram: 'skyefugate',
       YouTube: 'CodexMafia',
-      Reddit: '',
+      Reddit: 'skyefugate',
       StackOverflow: 'skyefugate',
-      KeyBase: '',
-      Facebook: '',
+      KeyBase: 'skyefugate',
+      Facebook: 'skyefugate',
       PeerList: 'skyefugate',
-      CodersRank: '',
-      'OMG.lol': '',
+      CodersRank: 'skyefugate',
+      'OMG.lol': 'skyefugate',
     },
     socialButtonLimit: 6,
     mailerConfig: {

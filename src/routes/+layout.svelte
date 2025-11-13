@@ -68,7 +68,7 @@
 
 <BackToTop color={routeBasedAccent($page.url.pathname)} />
 
-{#if $page.url.pathname !== '/'}
+{#if $page.url.pathname !== '/' && config.footerInfo.author}
   <Footer color={routeBasedAccent($page.url.pathname)} />
 {/if}
 
