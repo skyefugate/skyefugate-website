@@ -114,7 +114,7 @@
         href={navLink.route}
         style={`--accent: ${findRouteColor(navLink.route)};`}
         on:click={() => {
-          showLoader = true;
+          // Navigation handled by href
         }}
       >
         <Heading level="h3" size="1.4rem" color="var(--home-accent-foreground)" weight={600}

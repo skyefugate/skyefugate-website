@@ -31,7 +31,7 @@
       <LinkButton to="/about">About</LinkButton>
       <LinkButton to="/projects">Projects</LinkButton>
       <LinkButton to="/contact">Contact</LinkButton>
-      <LinkButton to="/volunteering">Volunteering</LinkButton>
+      <LinkButton to="/blog">Blog</LinkButton>
     </div>
   </div>
 {/if}
