@@ -243,7 +243,7 @@
         position: absolute;
         color: var(--dimmed-text);
         margin: 0;
-        transform: translateX(-20rem) translateY(2rem) scale(0.5) rotate(5deg);
+        transform: translateX(-100%) translateY(2rem) scale(0.5) rotate(5deg);
         transition: all ease-in-out 0.2s;
         opacity: 0;
         white-space: nowrap;
