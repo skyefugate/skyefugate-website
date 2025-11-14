@@ -155,7 +155,7 @@
               <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
             </svg>
           </button>
-          <h3>Contents</h3>
+          <h3>Navigation</h3>
           <button 
             class="close-btn" 
             on:click={toggleToc} 
@@ -202,7 +202,11 @@
               <line x1="8" y1="18" x2="21" y2="18"></line>
             </svg>
           </div>
-          <div class="peek-text">TOC</div>
+          {#if activeId}
+            <div class="peek-progress">
+              {tocItems.findIndex(item => item.id === activeId) + 1}/{tocItems.length}
+            </div>
+          {/if}
         </div>
       </div>
     {/if}
@@ -289,12 +293,13 @@
       color: white;
     }
     
-    .peek-text {
-      font-size: 0.7rem;
-      font-weight: 600;
+    .peek-progress {
+      font-size: 0.65rem;
+      font-weight: 700;
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
+      opacity: 0.8;
     }
   }
 
