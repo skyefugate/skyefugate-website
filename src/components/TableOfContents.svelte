@@ -56,7 +56,7 @@
     if (!browser || tocItems.length === 0) return;
 
     const headings = tocItems.map(item => document.getElementById(item.id)).filter(Boolean);
-    const scrollY = window.scrollY + 150;
+    const scrollY = window.scrollY + 120; // Reduced offset for better accuracy
 
     let current = '';
     let closestDistance = Infinity;
@@ -66,7 +66,7 @@
         const rect = heading.getBoundingClientRect();
         const distance = Math.abs(rect.top);
         
-        if (rect.top <= 150 && distance < closestDistance) {
+        if (rect.top <= 120 && distance < closestDistance) {
           current = heading.id;
           closestDistance = distance;
         }
@@ -133,46 +133,72 @@
 
 {#if tocItems.length > 0}
   <div class="toc-container" style="transform: translateY(calc(-50% + {tocOffset}px))">
-    <button 
-      class="control-btn reader-btn" 
-      class:active={readerMode}
-      on:click={toggleReaderMode} 
-      title="Toggle reader mode"
-    >
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-      </svg>
-    </button>
-
-    <nav class="toc" class:visible={isVisible}>
-      <div class="toc-header">
-        <h3>Contents</h3>
-        <button 
-          class="close-btn" 
-          on:click={toggleToc} 
-          title="Hide contents"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+    {#if !readerMode}
+      <nav class="toc" class:visible={isVisible}>
+        <div class="toc-header">
+          <button 
+            class="reader-btn" 
+            on:click={toggleReaderMode} 
+            title="Toggle reader mode"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </button>
+          <h3>Contents</h3>
+          <button 
+            class="close-btn" 
+            on:click={toggleToc} 
+            title="Hide contents"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        
+        <ul class="toc-list">
+          {#each tocItems as item}
+            <li class="toc-item level-{item.level}" class:active={activeId === item.id}>
+              <button 
+                class="toc-link"
+                on:click={() => scrollToHeading(item.id)}
+              >
+                {item.text}
+              </button>
+            </li>
+          {/each}
+        </ul>
+      </nav>
+    {:else}
+      <!-- Reader mode exit notch -->
+      <div class="reader-notch" title="Exit reader mode" on:click={toggleReaderMode}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
       </div>
-      
-      <ul class="toc-list">
-        {#each tocItems as item}
-          <li class="toc-item level-{item.level}" class:active={activeId === item.id}>
-            <button 
-              class="toc-link"
-              on:click={() => scrollToHeading(item.id)}
-            >
-              {item.text}
-            </button>
-          </li>
-        {/each}
-      </ul>
-    </nav>
+    {/if}
+
+    {#if !isVisible && !readerMode}
+      <!-- Show TOC button when hidden -->
+      <button 
+        class="show-toc-btn" 
+        on:click={toggleToc} 
+        title="Show contents"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
+      </button>
+    {/if}
   </div>
 {/if}
 
@@ -196,7 +222,7 @@
     }
   }
 
-  .control-btn {
+  .show-toc-btn {
     width: 44px;
     height: 44px;
     border: none;
@@ -215,10 +241,26 @@
       color: var(--foreground);
       transform: scale(1.05);
     }
+  }
+
+  .reader-notch {
+    width: 32px;
+    height: 48px;
+    background: var(--card-background);
+    border: var(--card-border);
+    border-radius: 8px 0 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--dimmed-text);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
     
-    &.active {
-      color: white;
-      background: var(--accent-1);
+    &:hover {
+      color: var(--foreground);
+      transform: translateX(-4px);
     }
   }
 
@@ -249,6 +291,23 @@
     justify-content: space-between;
     padding: 1rem 1.25rem 0.75rem;
     border-bottom: var(--card-border);
+    
+    .reader-btn {
+      border: none;
+      background: none;
+      color: var(--dimmed-text);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:hover {
+        color: var(--foreground);
+      }
+    }
     
     h3 {
       margin: 0;
@@ -305,30 +364,53 @@
     &.level-2 { 
       padding-left: 1.25rem; 
       font-weight: 500;
+      
+      .toc-link {
+        color: var(--foreground);
+        font-size: 0.9rem;
+      }
     }
     &.level-3 { 
       padding-left: 2rem; 
       font-size: 0.85rem;
+      
+      .toc-link {
+        color: var(--dimmed-text);
+        opacity: 0.9;
+      }
     }
     &.level-4 { 
       padding-left: 2.75rem; 
       font-size: 0.8rem;
-      opacity: 0.9;
+      
+      .toc-link {
+        color: var(--dimmed-text);
+        opacity: 0.8;
+      }
     }
     &.level-5 { 
       padding-left: 3.5rem; 
       font-size: 0.8rem;
-      opacity: 0.8;
+      
+      .toc-link {
+        color: var(--dimmed-text);
+        opacity: 0.7;
+      }
     }
     &.level-6 { 
       padding-left: 4.25rem; 
       font-size: 0.75rem;
-      opacity: 0.7;
+      
+      .toc-link {
+        color: var(--dimmed-text);
+        opacity: 0.6;
+      }
     }
     
     &.active .toc-link {
-      color: var(--accent-1);
+      color: var(--accent-1) !important;
       font-weight: 600;
+      opacity: 1 !important;
       
       &::before {
         opacity: 1;
@@ -343,12 +425,11 @@
     padding: 0.5rem 1.25rem 0.5rem 0;
     border: none;
     background: none;
-    color: var(--dimmed-text);
     text-align: left;
     font-size: 0.875rem;
     line-height: 1.4;
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
     position: relative;
     
     &::before {
@@ -365,11 +446,12 @@
     }
     
     &:hover {
-      color: var(--foreground);
+      color: var(--foreground) !important;
+      opacity: 1 !important;
     }
   }
 
-  // Reader mode styles - simplified, text-only focus
+  // Reader mode styles - hide TOC completely
   :global(body.reader-mode) {
     background: #faf9f7 !important;
     
@@ -388,8 +470,7 @@
     :global(.related-posts),
     :global(.back-nav),
     :global(.hero-image),
-    :global(.blog-image),
-    :global(.toc-container) {
+    :global(.blog-image) {
       display: none !important;
     }
     
