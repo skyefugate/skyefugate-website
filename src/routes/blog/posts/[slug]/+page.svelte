@@ -21,7 +21,9 @@
   <nav class="back-nav">
     <a href="/blog" class="back-link">
       <Icon name="arrow-left" size={16} />
-      <span>Posts</span>
+      <span>Blog</span>
+      <span class="separator">/</span>
+      <span class="current">Post</span>
     </a>
   </nav>
 
@@ -73,6 +75,15 @@
       
       &:hover {
         color: var(--foreground);
+      }
+      
+      .separator {
+        opacity: 0.5;
+      }
+      
+      .current {
+        color: var(--foreground);
+        font-weight: 500;
       }
     }
   }

@@ -53,12 +53,14 @@ It reads the email, analyzes links, checks the sender's rep, pulls in threat int
 
 Suspicious credential phish? It kicks off IR and leaves breadcrumbs you can follow.
 
+### Learning from Feedback
+
 <div class="blog-image">
   <img src="/images/blog/security-copilot-learning.jpg" alt="Agent Learning Process">
   <p class="caption">Brenda never takes coffee breaks, but she will absolutely flag that sketchy Mailchimp campaign about socks.</p>
 </div>
 
-## Visible and Auditable Triage Paths
+### Triage Visibility
 
 <div class="blog-image">
   <img src="/images/blog/security-copilot-triage.jpg" alt="Triage Path Visibility">
@@ -69,6 +71,8 @@ Suspicious credential phish? It kicks off IR and leaves breadcrumbs you can foll
   <img src="/images/blog/security-copilot-admin.jpg" alt="Admin Controls">
   <p class="caption">Admins can correct decisions, classify alerts, and — most importantly — teach the agent for next time.</p>
 </div>
+
+### Performance Metrics
 
 <div class="blog-image">
   <img src="/images/blog/security-copilot-performance.jpg" alt="Performance Statistics">
@@ -81,10 +85,14 @@ Let's talk **Conditional Access**. Everyone swears they maintain their CA polici
 
 The **Conditional Access Optimization Agent** digs through the chaos and surfaces actual, relevant suggestions:
 
+### Policy Gap Analysis
+
 <div class="blog-image">
   <img src="/images/blog/security-copilot-policy-gap.jpg" alt="Policy Gap Mapping">
   <p class="caption">Who's unprotected, what apps need coverage, and what policy tweaks would fix it.</p>
 </div>
+
+### Zero Trust Updates
 
 <div class="blog-image">
   <img src="/images/blog/security-copilot-zero-trust.jpg" alt="Zero Trust Policy Updates">

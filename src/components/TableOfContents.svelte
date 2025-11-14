@@ -14,6 +14,7 @@
   let activeId = '';
   let isVisible = true;
   let readerMode = false;
+  let scrollY = 0;
 
   // Extract headings from markdown content
   function extractHeadings(content: string): TocItem[] {
@@ -55,9 +56,8 @@
     if (!browser || tocItems.length === 0) return;
 
     const headings = tocItems.map(item => document.getElementById(item.id)).filter(Boolean);
-    const scrollY = window.scrollY + 150; // Increased offset
+    const scrollY = window.scrollY + 150;
 
-    // Find the heading that's currently most visible
     let current = '';
     let closestDistance = Infinity;
     
@@ -66,7 +66,6 @@
         const rect = heading.getBoundingClientRect();
         const distance = Math.abs(rect.top);
         
-        // If heading is in viewport and closer than previous
         if (rect.top <= 150 && distance < closestDistance) {
           current = heading.id;
           closestDistance = distance;
@@ -74,7 +73,6 @@
       }
     }
 
-    // Fallback to first heading if none found
     if (!current && headings.length > 0) {
       current = headings[0].id;
     }
@@ -95,6 +93,17 @@
     }
   }
 
+  // Handle scroll for TOC positioning
+  function handleScroll() {
+    if (browser) {
+      scrollY = window.scrollY;
+      updateActiveHeading();
+    }
+  }
+
+  // Calculate TOC position based on scroll
+  $: tocOffset = Math.max(0, Math.min(scrollY * 0.1, 100));
+
   onMount(() => {
     tocItems = extractHeadings(content);
     
@@ -109,9 +118,8 @@
       });
 
       // Set up scroll listener
-      const handleScroll = () => updateActiveHeading();
       window.addEventListener('scroll', handleScroll, { passive: true });
-      updateActiveHeading();
+      handleScroll();
 
       return () => {
         window.removeEventListener('scroll', handleScroll);
@@ -124,39 +132,32 @@
 </script>
 
 {#if tocItems.length > 0}
-  <div class="toc-container">
-    <div class="controls">
-      <button 
-        class="control-btn reader-btn" 
-        class:active={readerMode}
-        on:click={toggleReaderMode} 
-        title="Toggle reader mode"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-        </svg>
-      </button>
-      
-      <button 
-        class="control-btn toc-toggle" 
-        on:click={toggleToc} 
-        title={isVisible ? 'Hide contents' : 'Show contents'}
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="8" y1="6" x2="21" y2="6"></line>
-          <line x1="8" y1="12" x2="21" y2="12"></line>
-          <line x1="8" y1="18" x2="21" y2="18"></line>
-          <line x1="3" y1="6" x2="3.01" y2="6"></line>
-          <line x1="3" y1="12" x2="3.01" y2="12"></line>
-          <line x1="3" y1="18" x2="3.01" y2="18"></line>
-        </svg>
-      </button>
-    </div>
+  <div class="toc-container" style="transform: translateY(calc(-50% + {tocOffset}px))">
+    <button 
+      class="control-btn reader-btn" 
+      class:active={readerMode}
+      on:click={toggleReaderMode} 
+      title="Toggle reader mode"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+      </svg>
+    </button>
 
     <nav class="toc" class:visible={isVisible}>
       <div class="toc-header">
         <h3>Contents</h3>
+        <button 
+          class="close-btn" 
+          on:click={toggleToc} 
+          title="Hide contents"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
       
       <ul class="toc-list">
@@ -180,26 +181,19 @@
     position: fixed;
     top: 50%;
     right: 2rem;
-    transform: translateY(-50%);
     z-index: 100;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.5rem;
+    align-items: flex-start;
+    gap: 0.75rem;
+    transition: transform 0.3s ease;
     
     @media (max-width: 1200px) {
       right: 1rem;
     }
     
     @media (max-width: 768px) {
-      display: none; // Hide on mobile for now
+      display: none;
     }
-  }
-
-  .controls {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
   }
 
   .control-btn {
@@ -223,9 +217,8 @@
     }
     
     &.active {
-      color: var(--accent-1);
-      background: var(--accent-1);
       color: white;
+      background: var(--accent-1);
     }
   }
 
@@ -251,6 +244,9 @@
   }
 
   .toc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 1rem 1.25rem 0.75rem;
     border-bottom: var(--card-border);
     
@@ -261,6 +257,23 @@
       color: var(--foreground);
       text-transform: uppercase;
       letter-spacing: 0.5px;
+    }
+    
+    .close-btn {
+      border: none;
+      background: none;
+      color: var(--dimmed-text);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:hover {
+        color: var(--foreground);
+      }
     }
   }
 
@@ -356,24 +369,33 @@
     }
   }
 
-  // Reader mode styles
+  // Reader mode styles - simplified, text-only focus
   :global(body.reader-mode) {
-    background: #1a1a1a !important;
+    background: #faf9f7 !important;
     
     :global(.container) {
-      max-width: 700px !important;
+      max-width: 650px !important;
+      padding: 0 3rem !important;
     }
     
     :global(.post-content) {
-      font-size: 1.1rem !important;
-      line-height: 1.8 !important;
-      color: #e8e8e8 !important;
+      font-family: Georgia, 'Times New Roman', serif !important;
+      font-size: 1.2rem !important;
+      line-height: 1.7 !important;
+      color: #2d2d2d !important;
     }
     
     :global(.related-posts),
     :global(.back-nav),
-    :global(.hero-image) {
+    :global(.hero-image),
+    :global(.blog-image),
+    :global(.toc-container) {
       display: none !important;
+    }
+    
+    :global(.post-header) {
+      border: none !important;
+      text-align: center !important;
     }
   }
   
@@ -383,6 +405,7 @@
   :global(body.reader-mode h4),
   :global(body.reader-mode h5),
   :global(body.reader-mode h6) {
-    color: #ffffff !important;
+    color: #1a1a1a !important;
+    font-family: Georgia, 'Times New Roman', serif !important;
   }
 </style>
