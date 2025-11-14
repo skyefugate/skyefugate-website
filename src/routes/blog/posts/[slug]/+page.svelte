@@ -23,7 +23,7 @@
       <Icon name="arrow-left" size={16} />
       <span>Blog</span>
       <span class="separator">/</span>
-      <span class="current">{data.post.title.length > 30 ? data.post.title.substring(0, 30) + '...' : data.post.title}</span>
+      <span class="current">{data.post.title.length > 25 ? data.post.title.substring(0, 25) + '...' : data.post.title}</span>
     </a>
   </nav>
 

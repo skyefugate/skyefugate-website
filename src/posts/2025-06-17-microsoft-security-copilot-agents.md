@@ -111,7 +111,7 @@ Oh, and the partner agents? They're doing wild things with identity management, 
 
 Some are better than what Microsoft offers directly. Again — that's a good thing.
 
-## What's Missing (For Now)
+## What's Missing For Now
 
 Still early days:
 
@@ -133,6 +133,6 @@ They don't just process alerts — they learn from you, adapt to your environmen
 
 Not here to replace the team — just to make the work that is less fun simpler so your engineering teams can focus on what matters... like fixing the stuff that really moves the needle — not just the alerts that move your blood pressure.
 
-## Already Copiloting Security Copilot?
+## Already Using Security Copilot?
 
 I'd love to hear from you. What are your thoughts? How have you seen real benefits? What have been some of the things that surprised you? What's working, what's not, and what you wish it would do next — let's compare notes.

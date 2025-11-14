@@ -56,25 +56,38 @@
     if (!browser || tocItems.length === 0) return;
 
     const headings = tocItems.map(item => document.getElementById(item.id)).filter(Boolean);
-    const scrollY = window.scrollY + 120; // Reduced offset for better accuracy
+    const viewportHeight = window.innerHeight;
 
     let current = '';
-    let closestDistance = Infinity;
+    let bestScore = -1;
     
     for (const heading of headings) {
       if (heading) {
         const rect = heading.getBoundingClientRect();
-        const distance = Math.abs(rect.top);
+        const elementTop = rect.top;
+        const elementBottom = rect.bottom;
         
-        if (rect.top <= 120 && distance < closestDistance) {
-          current = heading.id;
-          closestDistance = distance;
+        // Check if heading is visible in viewport
+        if (elementTop < viewportHeight && elementBottom > 0) {
+          // Score based on how close to top of viewport (higher score = closer to top)
+          const score = viewportHeight - Math.max(0, elementTop);
+          if (score > bestScore) {
+            bestScore = score;
+            current = heading.id;
+          }
         }
       }
     }
 
-    if (!current && headings.length > 0) {
-      current = headings[0].id;
+    // Fallback: if no heading is visible, use the last one that passed
+    if (!current) {
+      for (let i = headings.length - 1; i >= 0; i--) {
+        const heading = headings[i];
+        if (heading && heading.getBoundingClientRect().top <= 100) {
+          current = heading.id;
+          break;
+        }
+      }
     }
 
     activeId = current;
