@@ -3,6 +3,7 @@
   import MarkdownRenderer from '$src/components/MarkdownRenderer.svelte';
   import PostCard from '$src/components/PostCard.svelte';
   import Icon from '$src/components/Icon.svelte';
+  import TableOfContents from '$src/components/TableOfContents.svelte';
   import type { PageData } from './$types';
 
   export let data: PageData;
@@ -36,6 +37,8 @@
       <MarkdownRenderer content={data.post.content} />
     </div>
   </article>
+
+  <TableOfContents content={data.post.content} />
 
   {#if data.relatedPosts.length > 0}
     <section class="related-posts">
