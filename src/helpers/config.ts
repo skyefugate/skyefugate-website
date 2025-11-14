@@ -102,7 +102,7 @@ const config: SiteConfig = {
     {
       company: 'Netsmart',
       companyUrl: 'https://ntst.com/',
-      companyLogo: '/netsmart-logo.jpeg',
+      companyLogo: '/images/logos/netsmart-logo.jpeg',
       jobTitle: 'Technology Architect - Plexus Enterprise Architecture',
       datesWorked: 'June 2025 - Present',
       responsibilities: 'Drive cloud strategy and infrastructure modernization across AWS, private cloud, and emerging platforms like Azure and GCP. Design and review infrastructure for scalability, cost efficiency, and operational excellence. Support enterprise migrations, resilience planning, and architecture validation.',
@@ -111,7 +111,7 @@ const config: SiteConfig = {
     {
       company: 'Netsmart',
       companyUrl: 'https://ntst.com/',
-      companyLogo: '/netsmart-logo.jpeg',
+      companyLogo: '/images/logos/netsmart-logo.jpeg',
       jobTitle: 'Team Lead, Network and Infrastructure - Plexus Platforms',
       datesWorked: 'March 2024 - June 2025',
       responsibilities: 'Led a team of skilled professionals ensuring security, reliability, and efficiency of hosting infrastructure. Led Network Major Incident Response team, accelerating issue identification and resolution by over 80%. Implemented NetSecDevOps practices leveraging AI/ML and code-first approaches.',
@@ -120,7 +120,7 @@ const config: SiteConfig = {
     {
       company: 'Netsmart',
       companyUrl: 'https://ntst.com/',
-      companyLogo: '/netsmart-logo.jpeg',
+      companyLogo: '/images/logos/netsmart-logo.jpeg',
       jobTitle: 'Network Security Engineer - Enterprise Cloud Technologies',
       datesWorked: 'June 2022 - March 2024',
       responsibilities: 'Specialized in managing firewalls and serving as point of escalation for datacenter issues. SME for firewalls and security technologies in both private and public cloud. Member of Security Incident Response and Major Incident Response teams.',
@@ -129,7 +129,7 @@ const config: SiteConfig = {
     {
       company: 'Onsite Logic',
       companyUrl: 'https://onsitelogic.com/',
-      companyLogo: '/onsite-logic.jpeg',
+      companyLogo: '/images/misc/onsite-logic.jpeg',
       jobTitle: 'Lead Security Engineer',
       datesWorked: 'September 2021 - June 2022',
       responsibilities: 'Engineered and implemented IT infrastructure and security policies for clients. Led a team of five on implementing security controls across various client industries. Committee Chair for Security Management.',
@@ -138,7 +138,7 @@ const config: SiteConfig = {
     {
       company: 'Cenetric Network Services',
       companyUrl: 'https://cenetric.com/',
-      companyLogo: '/cenetric-logo.jpeg',
+      companyLogo: '/images/logos/cenetric-logo.jpeg',
       jobTitle: 'Security Analyst',
       datesWorked: 'May 2019 - August 2021',
       responsibilities: 'Performed in-house, on-site, and remote computer services as lead engineer on assigned projects. Worked on advanced Network, Security, and IAM rollouts for mid to large scale clients.',
@@ -147,7 +147,7 @@ const config: SiteConfig = {
     {
       company: 'Micro Center',
       companyUrl: 'https://microcenter.com/',
-      companyLogo: '/micro-center-logo.jpeg',
+      companyLogo: '/images/logos/micro-center-logo.jpeg',
       jobTitle: 'Apple/Service Engineering Leader',
       datesWorked: 'May 2018 - May 2019',
       responsibilities: 'Diagnosed and repaired macOS, iOS, and Windows devices. Ensured KPIs including Customer Satisfaction, Profit and Loss, and Authorized Service Provider Metrics were met through collaboration with a team of 20+. iOS Repair Deployment Lead and Supervising/Training Technician.',
@@ -158,7 +158,7 @@ const config: SiteConfig = {
     {
       organization: 'SecKC',
       organizationUrl: 'https://seckc.org/',
-      organizationLogo: '/seckc-party-star.jpg',
+      organizationLogo: '/images/misc/seckc-party-star.jpg',
       role: 'Director of Stuff & Things',
       datesWorked: 'August 2016 - Present',
       responsibilities: 'Plan and schedule InfoSec events with a monthly attendance of 200+ through collaboration with various teams. Ensure that live production for events at various venues meets quality standards. Manage a team of 50+ volunteers to ensure events are executed to attendees satisfaction.',
@@ -168,7 +168,7 @@ const config: SiteConfig = {
     {
       organization: 'ITDRC',
       organizationUrl: 'https://www.itdrc.org/',
-      organizationLogo: '/ITDRC_logo.png',
+      organizationLogo: '/images/logos/ITDRC_logo.png',
       role: 'Volunteer',
       datesWorked: '2020 - Present',
       responsibilities: 'Support IT disaster recovery operations and emergency communications infrastructure. Assist with technology deployment and coordination during disaster response scenarios.',
