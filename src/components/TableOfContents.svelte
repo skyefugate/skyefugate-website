@@ -192,21 +192,19 @@
     {/if}
 
     {#if !isVisible && !readerMode}
-      <!-- Show TOC button when hidden -->
-      <button 
-        class="show-toc-btn" 
-        on:click={toggleToc} 
-        title="Show contents"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="8" y1="6" x2="21" y2="6"></line>
-          <line x1="8" y1="12" x2="21" y2="12"></line>
-          <line x1="8" y1="18" x2="21" y2="18"></line>
-          <line x1="3" y1="6" x2="3.01" y2="6"></line>
-          <line x1="3" y1="12" x2="3.01" y2="12"></line>
-          <line x1="3" y1="18" x2="3.01" y2="18"></line>
-        </svg>
-      </button>
+      <!-- Hidden TOC peek tab -->
+      <div class="toc-peek-tab" on:click={toggleToc} title="Show contents">
+        <div class="peek-content">
+          <div class="peek-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </div>
+          <div class="peek-text">TOC</div>
+        </div>
+      </div>
     {/if}
   </div>
 {/if}
@@ -231,25 +229,80 @@
     }
   }
 
-  .show-toc-btn {
-    width: 44px;
-    height: 44px;
-    border: none;
-    border-radius: 10px;
+  .toc {
+    width: 280px;
     background: var(--card-background);
-    color: var(--dimmed-text);
+    border: var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(20px);
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    
+    &:not(.visible) {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(20px);
+    }
+  }
+
+  .toc-peek-tab {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 120px;
+    background: var(--card-background);
+    border: var(--card-border);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    z-index: 99;
     
     &:hover {
-      color: var(--foreground);
-      transform: scale(1.05);
+      width: 48px;
+      background: var(--accent-1);
+      color: white;
+      transform: translateY(-50%) translateX(-4px);
     }
+    
+    .peek-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--dimmed-text);
+      transition: color 0.2s ease;
+    }
+    
+    &:hover .peek-content {
+      color: white;
+    }
+    
+    .peek-text {
+      font-size: 0.7rem;
+      font-weight: 600;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: 1px;
+    }
+  }
+
+  .toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    overflow: visible;
   }
 
   .reader-notch {
@@ -270,27 +323,6 @@
     &:hover {
       color: var(--foreground);
       transform: translateX(-4px);
-    }
-  }
-
-  .toc {
-    width: 280px;
-    max-height: 60vh;
-    background: var(--card-background);
-    border: var(--card-border);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-    backdrop-filter: blur(20px);
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-    transition: all 0.3s ease;
-    overflow: hidden;
-    
-    &:not(.visible) {
-      opacity: 0;
-      visibility: hidden;
-      transform: translateX(20px);
     }
   }
 
@@ -342,28 +374,6 @@
       &:hover {
         color: var(--foreground);
       }
-    }
-  }
-
-  .toc-list {
-    list-style: none;
-    margin: 0;
-    padding: 0.5rem 0;
-    max-height: calc(60vh - 60px);
-    overflow-y: auto;
-    
-    &::-webkit-scrollbar {
-      width: 4px;
-    }
-    
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background: var(--dimmed-text);
-      border-radius: 2px;
-      opacity: 0.3;
     }
   }
 
