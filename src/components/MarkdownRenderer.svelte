@@ -37,23 +37,23 @@
     :global(.blog-image) {
       text-align: center;
       margin: 2rem 0;
-      
-      img {
-        display: block;
-        margin: 0 auto 1rem auto;
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-      
-      .caption {
-        font-style: italic;
-        color: var(--dimmed-text);
-        font-size: 0.9rem;
-        margin: 0;
-        padding: 0 1rem;
-      }
+    }
+    
+    :global(.blog-image img) {
+      display: block;
+      margin: 0 auto 1rem auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    :global(.blog-image .caption) {
+      font-style: italic;
+      color: var(--dimmed-text);
+      font-size: 0.9rem;
+      margin: 0;
+      padding: 0 1rem;
     }
 
     :global(strong) {
