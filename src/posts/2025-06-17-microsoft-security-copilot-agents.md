@@ -7,10 +7,6 @@ author: "Skye Fugate"
 featured: true
 ---
 
-<div class="blog-image">
-  <img src="/images/blog/security-copilot-header.jpg" alt="Microsoft Security Copilot Agents Header">
-</div>
-
 You know what no one dreams about on Sunday night? **Triage duty**.
 
 Here's a scenario: You walk into the SOC on Monday, crack open the dashboard, and get hit with a wall of 1,400 "reported phishing" emails. You already know 99% are marketing fluff or misclicks, but you still have to check them — because one might not be.
