@@ -25,13 +25,8 @@
     while ((match = headingRegex.exec(content)) !== null) {
       const level = match[1].length;
       const text = match[2].trim();
-      const id = text
-        .toLowerCase()
-        .replace(/'/g, '') // Remove apostrophes first
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-|-$/g, '');
+      // Match the markdown renderer's ID generation exactly
+      const id = text.toLowerCase().replace(/[^\w]+/g, '-');
       
       items.push({ id, text, level });
     }
