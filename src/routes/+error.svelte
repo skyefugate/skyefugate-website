@@ -5,6 +5,12 @@
 
   $: status = $page.status || 500;
   $: catImageUrl = `https://http.cat/${status}.jpg`;
+  
+  // Get public navigation links from config
+  $: publicLinks = config.routeLinks.filter(link => 
+    link.route !== '/' && 
+    !link.route.includes('volunteering') // Exclude non-public routes
+  );
 </script>
 
 <svelte:head>
@@ -28,10 +34,9 @@
   <div class="suggestions">
     <p>Try these pages instead:</p>
     <div class="suggestion-links">
-      <LinkButton to="/about">About</LinkButton>
-      <LinkButton to="/projects">Projects</LinkButton>
-      <LinkButton to="/contact">Contact</LinkButton>
-      <LinkButton to="/blog">Blog</LinkButton>
+      {#each publicLinks as link}
+        <LinkButton to={link.route}>{link.label}</LinkButton>
+      {/each}
     </div>
   </div>
 {/if}
