@@ -7,7 +7,7 @@ author: "Skye Fugate"
 featured: true
 ---
 
-![Microsoft Security Copilot Agents Header](/src/lib/assets/images/blog/security-copilot-header.jpg)
+![Microsoft Security Copilot Agents Header](/images/blog/security-copilot-header.jpg)
 
 You know what no one dreams about on Sunday night? Triage duty.
 
@@ -27,7 +27,7 @@ Nick Goodman walked us through the live demo. He showcased how these agents
 reason, learn from feedback, and actually help reduce noise without losing
 visibility. Super sharp, super actionable.
 
-![Security Copilot Continuous Loop](/src/lib/assets/images/blog/security-copilot-loop.jpg)
+![Security Copilot Continuous Loop](/images/blog/security-copilot-loop.jpg)
 *Security Copilot agents live inside a continuous loop — human judgment feeds
 smarter automation, which loops back with improved protection.*
 
@@ -50,7 +50,7 @@ then started sharing it! Letting others build is how this scales.
 
 ## How This Scales
 
-![Growing Ecosystem of Agents](/src/lib/assets/images/blog/security-copilot-ecosystem.jpg)
+![Growing Ecosystem of Agents](/images/blog/security-copilot-ecosystem.jpg)
 *A growing ecosystem of agents means teams can tackle phishing, DLP,
 remediation, identity protection, and more — across Microsoft and partner
 tools.*
@@ -71,22 +71,22 @@ follow.
 
 ## And It Learns. Like — Actual Learning
 
-![Agent Learning Process](/src/lib/assets/images/blog/security-copilot-learning.jpg)
+![Agent Learning Process](/images/blog/security-copilot-learning.jpg)
 *Brenda never takes coffee breaks, but she will absolutely flag that sketchy
 Mailchimp campaign about socks.*
 
 ## Visible and Auditable Triage Paths
 
-![Triage Path Visibility](/src/lib/assets/images/blog/security-copilot-triage.jpg)
+![Triage Path Visibility](/images/blog/security-copilot-triage.jpg)
 *Triage paths are visible, auditable, and able to be corrected.*
 
-![Admin Controls](/src/lib/assets/images/blog/security-copilot-admin.jpg)
+![Admin Controls](/images/blog/security-copilot-admin.jpg)
 *Admins can correct decisions, classify alerts, and — most importantly — teach
 the agent for next time.*
 
 ## Performance Metrics
 
-![Performance Statistics](/src/lib/assets/images/blog/security-copilot-performance.jpg)
+![Performance Statistics](/images/blog/security-copilot-performance.jpg)
 *95% resolution rate, 10-minute average triage time. And yes, you can still
 pause the agent if you need to investigate manually.*
 
@@ -101,11 +101,11 @@ actual, relevant suggestions:
 
 ## Policy Gap Analysis
 
-![Policy Gap Mapping](/src/lib/assets/images/blog/security-copilot-policy-gap.jpg)
+![Policy Gap Mapping](/images/blog/security-copilot-policy-gap.jpg)
 *Who's unprotected, what apps need coverage, and what policy tweaks would
 fix it.*
 
-![Zero Trust Policy Updates](/src/lib/assets/images/blog/security-copilot-zero-trust.jpg)
+![Zero Trust Policy Updates](/images/blog/security-copilot-zero-trust.jpg)
 *The agent maps policy gaps, then offers practical Zero Trust-aligned updates
 — including suggestions to avoid locking out execs during Q4.*
 
