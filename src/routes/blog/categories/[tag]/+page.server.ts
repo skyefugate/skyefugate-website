@@ -2,7 +2,7 @@ import { loadAllPosts, getPostsByTag } from '$src/helpers/post-utils';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const prerender = true;
+export const prerender = false;
 
 export const load: PageServerLoad = async ({ params }) => {
   const allPosts = await loadAllPosts();
