@@ -231,6 +231,11 @@
         transform: translateX(-20rem) translateY(2rem) scale(0.5) rotate(5deg);
         transition: all ease-in-out 0.2s;
         opacity: 0;
+        white-space: nowrap;
+        left: 1rem;
+        right: 1rem;
+        max-width: calc(100% - 2rem);
+        overflow: hidden;
       }
 
       &:hover {
@@ -247,6 +252,7 @@
         p.subtitle {
           transform: translateX(0) translateY(-1.5rem) scale(1) rotate(0);
           opacity: 1;
+          white-space: normal;
         }
       }
 
