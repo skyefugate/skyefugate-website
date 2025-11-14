@@ -5,6 +5,7 @@ excerpt: "Security Copilot agents live inside a continuous loop — human judgme
 tags: ["security", "automation", "microsoft", "ai", "copilot"]
 author: "Skye Fugate"
 featured: true
+headerImage: "/images/blog/microsoft-security-copilot-agents/security-copilot-header.jpg"
 ---
 
 You know what no one dreams about on Sunday night? **Triage duty**.
@@ -18,7 +19,7 @@ And… I think they're kinda crushing it.
 I got a firsthand look during **Security Field Day 13** from Tech Field Day, where Nick Goodman walked us through the live demo. He showcased how these agents reason, learn from feedback, and actually help reduce noise without losing visibility. Super sharp, super actionable.
 
 <div class="blog-image">
-  <img src="/images/blog/security-copilot-loop.jpg" alt="Security Copilot Continuous Loop">
+  <img src="/images/blog/microsoft-security-copilot-agents/security-copilot-loop.jpg" alt="Security Copilot Continuous Loop">
   <p class="caption">Security Copilot agents live inside a continuous loop — human judgment feeds smarter automation, which loops back with improved protection.</p>
 </div>
 
@@ -35,7 +36,7 @@ Not with brittle regex or one-off rules, but with actual "this was a HR vendor, 
 What's even better? There are more third-party agents live than Microsoft's own. That's not a burn — that's by design. Microsoft built the sandbox and then started sharing it! Letting others build is how this scales.
 
 <div class="blog-image">
-  <img src="/images/blog/security-copilot-ecosystem.jpg" alt="Growing Ecosystem of Agents">
+  <img src="/images/blog/microsoft-security-copilot-agents/security-copilot-ecosystem.jpg" alt="Growing Ecosystem of Agents">
   <p class="caption">A growing ecosystem of agents means teams can tackle phishing, DLP, remediation, identity protection, and more — across Microsoft and partner tools.</p>
 </div>
 
@@ -52,26 +53,26 @@ Suspicious credential phish? It kicks off IR and leaves breadcrumbs you can foll
 ### Learning from Feedback
 
 <div class="blog-image">
-  <img src="/images/blog/security-copilot-learning.jpg" alt="Agent Learning Process">
+  <img src="/images/blog/microsoft-security-copilot-agents/security-copilot-learning.jpg" alt="Agent Learning Process">
   <p class="caption">Brenda never takes coffee breaks, but she will absolutely flag that sketchy Mailchimp campaign about socks.</p>
 </div>
 
 ### Triage Visibility
 
 <div class="blog-image">
-  <img src="/images/blog/security-copilot-triage.jpg" alt="Triage Path Visibility">
+  <img src="/images/blog/microsoft-security-copilot-agents/security-copilot-triage.jpg" alt="Triage Path Visibility">
   <p class="caption">Triage paths are visible, auditable, and able to be corrected.</p>
 </div>
 
 <div class="blog-image">
-  <img src="/images/blog/security-copilot-admin.jpg" alt="Admin Controls">
+  <img src="/images/blog/microsoft-security-copilot-agents/security-copilot-admin.jpg" alt="Admin Controls">
   <p class="caption">Admins can correct decisions, classify alerts, and — most importantly — teach the agent for next time.</p>
 </div>
 
 ### Performance Metrics
 
 <div class="blog-image">
-  <img src="/images/blog/security-copilot-performance.jpg" alt="Performance Statistics">
+  <img src="/images/blog/microsoft-security-copilot-agents/security-copilot-performance.jpg" alt="Performance Statistics">
   <p class="caption">95% resolution rate, 10-minute average triage time. And yes, you can still pause the agent if you need to investigate manually.</p>
 </div>
 
@@ -84,14 +85,14 @@ The **Conditional Access Optimization Agent** digs through the chaos and surface
 ### Policy Gap Analysis
 
 <div class="blog-image">
-  <img src="/images/blog/security-copilot-policy-gap.jpg" alt="Policy Gap Mapping">
+  <img src="/images/blog/microsoft-security-copilot-agents/security-copilot-policy-gap.jpg" alt="Policy Gap Mapping">
   <p class="caption">Who's unprotected, what apps need coverage, and what policy tweaks would fix it.</p>
 </div>
 
 ### Zero Trust Updates
 
 <div class="blog-image">
-  <img src="/images/blog/security-copilot-zero-trust.jpg" alt="Zero Trust Policy Updates">
+  <img src="/images/blog/microsoft-security-copilot-agents/security-copilot-zero-trust.jpg" alt="Zero Trust Policy Updates">
   <p class="caption">The agent maps policy gaps, then offers practical Zero Trust-aligned updates — including suggestions to avoid locking out execs during Q4.</p>
 </div>
 

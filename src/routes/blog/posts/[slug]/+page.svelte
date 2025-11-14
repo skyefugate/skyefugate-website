@@ -8,8 +8,9 @@
 
   export let data: PageData;
 
-  // Extract header image from content if it exists
-  $: headerImage = data.post.content.match(/<img[^>]+src="([^"]*)"[^>]*>/)?.[1] || 
+  // Use explicit header image from frontmatter, fallback to first content image
+  $: headerImage = data.post.headerImage || 
+                   data.post.content.match(/<img[^>]+src="([^"]*)"[^>]*>/)?.[1] || 
                    data.post.content.match(/!\[.*?\]\(([^)]+)\)/)?.[1];
   $: postSlug = data.post.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
 </script>
@@ -23,7 +24,7 @@
   <meta property="og:url" content="https://fugate.dev/blog/posts/{data.post.slug}" />
   <meta property="og:title" content={data.post.title} />
   <meta property="og:description" content={data.post.excerpt} />
-  <meta property="og:image" content={headerImage ? `https://fugate.dev${headerImage}` : `https://fugate.dev/images/blog/security-copilot-header.jpg`} />
+  <meta property="og:image" content={headerImage ? `https://fugate.dev${headerImage}` : `https://fugate.dev/preview.png`} />
   <meta property="og:site_name" content="Skye Fugate's Blog" />
   <meta property="article:author" content={data.post.author} />
   <meta property="article:published_time" content={data.post.date} />
@@ -38,7 +39,7 @@
   <meta name="twitter:url" content="https://fugate.dev/blog/posts/{postSlug}" />
   <meta name="twitter:title" content={data.post.title} />
   <meta name="twitter:description" content={data.post.excerpt} />
-  <meta name="twitter:image" content={headerImage ? `https://fugate.dev${headerImage}` : `https://fugate.dev/images/blog/security-copilot-header.jpg`} />
+  <meta name="twitter:image" content={headerImage ? `https://fugate.dev${headerImage}` : `https://fugate.dev/preview.png`} />
   <meta name="twitter:creator" content="@skyefugate" />
 </svelte:head>
 
