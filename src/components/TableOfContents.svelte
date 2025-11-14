@@ -27,6 +27,7 @@
       const text = match[2].trim();
       const id = text
         .toLowerCase()
+        .replace(/'/g, '') // Remove apostrophes first
         .replace(/[^\w\s-]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
