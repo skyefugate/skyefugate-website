@@ -1,0 +1,6 @@
+Contact: mailto:security@fugate.dev
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://fugate.dev/pgp
+Canonical: https://fugate.dev/.well-known/security.txt
+Policy: https://fugate.dev/security-policy
+Preferred-Languages: en
