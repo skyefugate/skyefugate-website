@@ -5,26 +5,23 @@
 
   export let data: PageData;
 
-  $: recentPosts = data.posts.slice(0, 12);
+  $: recentPosts = data.posts.slice(0, 8);
 </script>
 
 <div class="hero">
-  <h1>Welcome to Skye's Blog</h1>
-  <p class="subtitle">Technology, Security, and Community</p>
+  <h1>Blog</h1>
   <p>
-    Thoughts from an Enterprise Architect on cloud infrastructure,
-    cybersecurity, and building inclusive tech communities.
+    Deep dives into security architecture, cloud infrastructure, and the occasional rant about why your SOC is drowning in false positives.
   </p>
 </div>
 
-<section class="recent-posts">
-  <h2>Recent Posts</h2>
+<section class="posts">
   <PostGrid posts={recentPosts} />
 
-  {#if data.posts.length > 12}
+  {#if data.posts.length > 8}
     <div class="view-all">
-      <Button priority="primary">
-        <a href="/archive">View All Posts</a>
+      <Button priority="secondary">
+        <a href="/blog/archive">All Posts</a>
       </Button>
     </div>
   {/if}
@@ -33,35 +30,25 @@
 <style lang="scss">
   .hero {
     text-align: center;
-    padding: 3rem 0 4rem;
+    padding: 2rem 0 3rem;
+    max-width: 700px;
+    margin: 0 auto;
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
       color: var(--foreground);
-    }
-
-    .subtitle {
-      font-size: 1.5rem;
-      color: var(--dimmed-text);
-      margin-bottom: 1rem;
     }
 
     p {
-      max-width: 600px;
-      margin: 0 auto;
+      font-size: 1.1rem;
       line-height: 1.6;
+      color: var(--dimmed-text);
     }
   }
 
-  .recent-posts {
-    margin-top: 3rem;
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: var(--foreground);
-    }
+  .posts {
+    margin-top: 2rem;
 
     .view-all {
       margin-top: 3rem;
@@ -76,12 +63,14 @@
 
   @media (max-width: 768px) {
     .hero {
+      padding: 1.5rem 0 2rem;
+      
       h1 {
         font-size: 2rem;
       }
 
-      .subtitle {
-        font-size: 1.25rem;
+      p {
+        font-size: 1rem;
       }
     }
   }
