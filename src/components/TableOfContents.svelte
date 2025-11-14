@@ -12,11 +12,12 @@
 
   let tocItems: TocItem[] = [];
   let activeId = '';
-  let isVisible = false;
+  let isVisible = true;
+  let readerMode = false;
 
   // Extract headings from markdown content
   function extractHeadings(content: string): TocItem[] {
-    const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+    const headingRegex = /^(#{2,6})\s+(.+)$/gm; // Skip H1, start from H2
     const items: TocItem[] = [];
     let match;
 
@@ -54,7 +55,7 @@
     if (!browser || tocItems.length === 0) return;
 
     const headings = tocItems.map(item => document.getElementById(item.id)).filter(Boolean);
-    const scrollY = window.scrollY + 100; // Offset for better UX
+    const scrollY = window.scrollY + 100;
 
     let current = '';
     for (const heading of headings) {
@@ -71,13 +72,21 @@
     isVisible = !isVisible;
   }
 
+  // Toggle reader mode
+  function toggleReaderMode() {
+    readerMode = !readerMode;
+    if (browser) {
+      document.body.classList.toggle('reader-mode', readerMode);
+    }
+  }
+
   onMount(() => {
     tocItems = extractHeadings(content);
     
     if (tocItems.length > 0) {
       // Add IDs to headings in the DOM
       tocItems.forEach(item => {
-        const heading = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6'))
+        const heading = Array.from(document.querySelectorAll('h2, h3, h4, h5, h6'))
           .find(h => h.textContent?.trim() === item.text);
         if (heading && !heading.id) {
           heading.id = item.id;
@@ -91,33 +100,48 @@
 
       return () => {
         window.removeEventListener('scroll', handleScroll);
+        if (browser) {
+          document.body.classList.remove('reader-mode');
+        }
       };
     }
   });
 </script>
 
 {#if tocItems.length > 0}
-  <div class="toc-container" class:visible={isVisible}>
-    <button class="toc-toggle" on:click={toggleToc} aria-label="Toggle table of contents">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="8" y1="6" x2="21" y2="6"></line>
-        <line x1="8" y1="12" x2="21" y2="12"></line>
-        <line x1="8" y1="18" x2="21" y2="18"></line>
-        <line x1="3" y1="6" x2="3.01" y2="6"></line>
-        <line x1="3" y1="12" x2="3.01" y2="12"></line>
-        <line x1="3" y1="18" x2="3.01" y2="18"></line>
-      </svg>
-    </button>
+  <div class="toc-container">
+    <div class="controls">
+      <button 
+        class="control-btn reader-btn" 
+        class:active={readerMode}
+        on:click={toggleReaderMode} 
+        title="Toggle reader mode"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </button>
+      
+      <button 
+        class="control-btn toc-toggle" 
+        on:click={toggleToc} 
+        title={isVisible ? 'Hide contents' : 'Show contents'}
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
+      </button>
+    </div>
 
-    <nav class="toc" class:expanded={isVisible}>
+    <nav class="toc" class:visible={isVisible}>
       <div class="toc-header">
         <h3>Contents</h3>
-        <button class="close-btn" on:click={toggleToc} aria-label="Close table of contents">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
       </div>
       
       <ul class="toc-list">
@@ -143,27 +167,31 @@
     right: 2rem;
     transform: translateY(-50%);
     z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
     
     @media (max-width: 1200px) {
       right: 1rem;
     }
     
     @media (max-width: 768px) {
-      top: auto;
-      bottom: 2rem;
-      right: 1rem;
-      transform: none;
+      display: none; // Hide on mobile for now
     }
   }
 
-  .toc-toggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 48px;
-    height: 48px;
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .control-btn {
+    width: 44px;
+    height: 44px;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     background: var(--card-background);
     color: var(--dimmed-text);
     cursor: pointer;
@@ -179,73 +207,45 @@
       transform: scale(1.05);
     }
     
-    .visible & {
-      opacity: 0;
-      pointer-events: none;
+    &.active {
+      color: var(--accent-1);
+      background: var(--accent-1);
+      color: white;
     }
   }
 
   .toc {
-    position: absolute;
-    top: 0;
-    right: 0;
     width: 280px;
-    max-height: 70vh;
+    max-height: 60vh;
     background: var(--card-background);
     border: var(--card-border);
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(20px);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(20px);
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
     transition: all 0.3s ease;
     overflow: hidden;
     
-    &.expanded {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(0);
-    }
-    
-    @media (max-width: 768px) {
-      width: 90vw;
-      max-width: 320px;
-      right: 0;
-      transform: translateY(20px);
-      
-      &.expanded {
-        transform: translateY(0);
-      }
+    &:not(.visible) {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(20px);
     }
   }
 
   .toc-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.25rem;
+    padding: 1rem 1.25rem 0.75rem;
     border-bottom: var(--card-border);
     
     h3 {
       margin: 0;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--foreground);
-    }
-    
-    .close-btn {
-      border: none;
-      background: none;
-      color: var(--dimmed-text);
-      cursor: pointer;
-      padding: 4px;
-      border-radius: 4px;
-      transition: color 0.2s ease;
-      
-      &:hover {
-        color: var(--foreground);
-      }
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
   }
 
@@ -253,7 +253,7 @@
     list-style: none;
     margin: 0;
     padding: 0.5rem 0;
-    max-height: calc(70vh - 60px);
+    max-height: calc(60vh - 60px);
     overflow-y: auto;
     
     &::-webkit-scrollbar {
@@ -274,12 +274,11 @@
   .toc-item {
     margin: 0;
     
-    &.level-1 { padding-left: 1.25rem; }
-    &.level-2 { padding-left: 1.75rem; }
-    &.level-3 { padding-left: 2.25rem; }
-    &.level-4 { padding-left: 2.75rem; }
-    &.level-5 { padding-left: 3.25rem; }
-    &.level-6 { padding-left: 3.75rem; }
+    &.level-2 { padding-left: 1.25rem; }
+    &.level-3 { padding-left: 1.75rem; }
+    &.level-4 { padding-left: 2.25rem; }
+    &.level-5 { padding-left: 2.75rem; }
+    &.level-6 { padding-left: 3.25rem; }
     
     &.active .toc-link {
       color: var(--accent-1);
@@ -324,10 +323,28 @@
     }
   }
 
-  // Hide on very small screens
-  @media (max-width: 480px) {
-    .toc-container {
-      display: none;
+  // Reader mode styles
+  :global(body.reader-mode) {
+    background: #1a1a1a !important;
+    
+    :global(.container) {
+      max-width: 700px !important;
+    }
+    
+    :global(.post-content) {
+      font-size: 1.1rem !important;
+      line-height: 1.8 !important;
+      color: #e8e8e8 !important;
+    }
+    
+    :global(.related-posts),
+    :global(.back-nav),
+    :global(.hero-image) {
+      display: none !important;
+    }
+    
+    :global(h1, h2, h3, h4, h5, h6) {
+      color: #ffffff !important;
     }
   }
 </style>
