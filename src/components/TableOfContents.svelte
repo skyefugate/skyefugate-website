@@ -375,9 +375,14 @@
     :global(.hero-image) {
       display: none !important;
     }
-    
-    :global(h1, h2, h3, h4, h5, h6) {
-      color: #ffffff !important;
-    }
+  }
+  
+  :global(body.reader-mode h1),
+  :global(body.reader-mode h2),
+  :global(body.reader-mode h3),
+  :global(body.reader-mode h4),
+  :global(body.reader-mode h5),
+  :global(body.reader-mode h6) {
+    color: #ffffff !important;
   }
 </style>
