@@ -55,13 +55,28 @@
     if (!browser || tocItems.length === 0) return;
 
     const headings = tocItems.map(item => document.getElementById(item.id)).filter(Boolean);
-    const scrollY = window.scrollY + 100;
+    const scrollY = window.scrollY + 150; // Increased offset
 
+    // Find the heading that's currently most visible
     let current = '';
+    let closestDistance = Infinity;
+    
     for (const heading of headings) {
-      if (heading && heading.offsetTop <= scrollY) {
-        current = heading.id;
+      if (heading) {
+        const rect = heading.getBoundingClientRect();
+        const distance = Math.abs(rect.top);
+        
+        // If heading is in viewport and closer than previous
+        if (rect.top <= 150 && distance < closestDistance) {
+          current = heading.id;
+          closestDistance = distance;
+        }
       }
+    }
+
+    // Fallback to first heading if none found
+    if (!current && headings.length > 0) {
+      current = headings[0].id;
     }
 
     activeId = current;
@@ -274,15 +289,33 @@
   .toc-item {
     margin: 0;
     
-    &.level-2 { padding-left: 1.25rem; }
-    &.level-3 { padding-left: 1.75rem; }
-    &.level-4 { padding-left: 2.25rem; }
-    &.level-5 { padding-left: 2.75rem; }
-    &.level-6 { padding-left: 3.25rem; }
+    &.level-2 { 
+      padding-left: 1.25rem; 
+      font-weight: 500;
+    }
+    &.level-3 { 
+      padding-left: 2rem; 
+      font-size: 0.85rem;
+    }
+    &.level-4 { 
+      padding-left: 2.75rem; 
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+    &.level-5 { 
+      padding-left: 3.5rem; 
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+    &.level-6 { 
+      padding-left: 4.25rem; 
+      font-size: 0.75rem;
+      opacity: 0.7;
+    }
     
     &.active .toc-link {
       color: var(--accent-1);
-      font-weight: 500;
+      font-weight: 600;
       
       &::before {
         opacity: 1;
