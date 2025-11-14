@@ -31,6 +31,9 @@
   };
 
   onMount(() => {
+    // Add homepage class to body for mouse effect
+    document.body.classList.add('homepage');
+    
     const buttons = document.querySelectorAll<HTMLAnchorElement>('.tile');
     buttons.forEach((button) => {
       button.addEventListener('mousemove', (e: MouseEvent) => {
@@ -71,6 +74,11 @@
       // Start the body animation loop
       requestAnimationFrame(updatePosition);
     }
+    
+    // Cleanup on page leave
+    return () => {
+      document.body.classList.remove('homepage');
+    };
   });
 
 </script>
@@ -179,6 +187,13 @@
     }
     &:hover::after {
       opacity: 0.4;
+    }
+  }
+
+  // Only show mouse effect on homepage
+  :global(body:not(.homepage)) {
+    &::after {
+      display: none !important;
     }
   }
 
