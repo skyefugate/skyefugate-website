@@ -1,15 +1,8 @@
-import cloudflareAdapter from '@sveltejs/adapter-cloudflare';
 import staticAdapter from '@sveltejs/adapter-static';
 import sveltePreprocess from 'svelte-preprocess';
 
-let selectedAdapter;
-
-if (process.env.DEPLOY_TARGET === 'STATIC') {
-  selectedAdapter = staticAdapter({ fallback: '404.html' });
-} else {
-  // Default to Cloudflare adapter
-  selectedAdapter = cloudflareAdapter();
-}
+// Use static adapter by default, Cloudflare for production builds
+const selectedAdapter = staticAdapter({ fallback: '404.html' });
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

@@ -694,6 +694,13 @@ are-we-there-yet@^2.0.0:
     delegates "^1.0.0"
     readable-stream "^3.6.0"
 
+argparse@^1.0.7:
+  version "1.0.10"
+  resolved "https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz"
+  integrity sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==
+  dependencies:
+    sprintf-js "~1.0.2"
+
 argparse@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz"
@@ -1326,6 +1333,11 @@ espree@^9.4.0:
     acorn-jsx "^5.3.2"
     eslint-visitor-keys "^3.3.0"
 
+esprima@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz"
+  integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
+
 esquery@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/esquery/-/esquery-1.4.0.tgz"
@@ -1359,6 +1371,13 @@ esutils@^2.0.2:
   version "2.0.3"
   resolved "https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
+
+extend-shallow@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/extend-shallow/-/extend-shallow-2.0.1.tgz"
+  integrity sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==
+  dependencies:
+    is-extendable "^0.1.0"
 
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
@@ -1558,6 +1577,16 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.npmjs.org/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
+gray-matter@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/gray-matter/-/gray-matter-4.0.3.tgz"
+  integrity sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==
+  dependencies:
+    js-yaml "^3.13.1"
+    kind-of "^6.0.2"
+    section-matter "^1.0.0"
+    strip-bom-string "^1.0.0"
+
 has-flag@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz"
@@ -1574,6 +1603,11 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+highlight.js@^11.11.1:
+  version "11.11.1"
+  resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-11.11.1.tgz"
+  integrity sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==
 
 https-proxy-agent@^5.0.0:
   version "5.0.1"
@@ -1657,6 +1691,11 @@ is-core-module@^2.9.0:
   dependencies:
     has "^1.0.3"
 
+is-extendable@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/is-extendable/-/is-extendable-0.1.1.tgz"
+  integrity sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==
+
 is-extglob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz"
@@ -1706,6 +1745,14 @@ js-sdsl@^4.1.4:
   resolved "https://registry.npmjs.org/js-sdsl/-/js-sdsl-4.2.0.tgz"
   integrity sha512-dyBIzQBDkCqCu+0upx25Y2jGdbTGxE9fshMsCdK0ViOongpV+n5tXRcZY9v7CaVQ79AGS9KA1KHtojxiM7aXSQ==
 
+js-yaml@^3.13.1:
+  version "3.14.1"
+  resolved "https://registry.npmjs.org/js-yaml/-/js-yaml-3.14.1.tgz"
+  integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^4.0.0"
+
 js-yaml@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.0.tgz"
@@ -1722,6 +1769,11 @@ json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz"
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
+
+kind-of@^6.0.0, kind-of@^6.0.2:
+  version "6.0.3"
+  resolved "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz"
+  integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
 kleur@^4.1.5:
   version "4.1.5"
@@ -1794,6 +1846,16 @@ make-dir@^3.1.0:
   integrity sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==
   dependencies:
     semver "^6.0.0"
+
+marked-highlight@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.npmjs.org/marked-highlight/-/marked-highlight-2.2.3.tgz"
+  integrity sha512-FCfZRxW/msZAiasCML4isYpxyQWKEEx44vOgdn5Kloae+Qc3q4XR7WjpKKf8oMLk7JP9ZCRd2vhtclJFdwxlWQ==
+
+marked@^17.0.0, "marked@>=4 <18":
+  version "17.0.0"
+  resolved "https://registry.npmjs.org/marked/-/marked-17.0.0.tgz"
+  integrity sha512-KkDYEWEEiYJw/KC+DVm1zzlpMQSMIu6YRltkcCvwheCp8HWPXCk9JwOmHJKBlGfzcpzcIt6x3sMnTsRm/51oDg==
 
 merge2@^1.3.0, merge2@^1.4.1:
   version "1.4.1"
@@ -2181,6 +2243,14 @@ sass@*, sass@^1.26.8, sass@^1.57.0:
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
 
+section-matter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/section-matter/-/section-matter-1.0.0.tgz"
+  integrity sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==
+  dependencies:
+    extend-shallow "^2.0.1"
+    kind-of "^6.0.0"
+
 semver@^6.0.0:
   version "6.3.0"
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.0.tgz"
@@ -2259,6 +2329,11 @@ sourcemap-codec@^1.3.0, sourcemap-codec@^1.4.8:
   resolved "https://registry.npmjs.org/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
+sprintf-js@~1.0.2:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz"
+  integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
+
 streamsearch@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/streamsearch/-/streamsearch-1.1.0.tgz"
@@ -2286,6 +2361,11 @@ strip-ansi@^6.0.1:
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
   dependencies:
     ansi-regex "^5.0.1"
+
+strip-bom-string@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/strip-bom-string/-/strip-bom-string-1.0.0.tgz"
+  integrity sha512-uCC2VHvQRYu+lMh4My/sFNmF2klFymLX1wHJeXnbEJERpV/ZsVuonzerjfrGpIGF7LBVa1O7i9kjiWvJiFck8g==
 
 strip-indent@^3.0.0:
   version "3.0.0"

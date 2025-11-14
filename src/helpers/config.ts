@@ -11,12 +11,6 @@ const config: SiteConfig = {
 
   routeLinks: [
     { label: 'Home', route: '/', color: 'var(--accent-1, #ff0099)' },
-    // {
-    //   label: 'Blog',
-    //   route: '/blog',
-    //   color: 'var(--accent-2, #b45eff)',
-    //   description: 'Published articles, notes, tutorials and updates',
-    // },
     {
       label: 'Projects',
       route: '/projects',
@@ -42,6 +36,12 @@ const config: SiteConfig = {
           description: 'Community involvement and volunteer leadership',
         },
       ],
+    },
+    {
+      label: 'Blog',
+      route: '/blog',
+      color: 'var(--accent-2, #b45eff)',
+      description: 'Published articles, notes, tutorials and updates',
     },
   ],
   footerInfo: {
