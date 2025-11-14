@@ -10,11 +10,35 @@
 
   // Extract header image from content if it exists
   $: headerImage = data.post.content.match(/<img[^>]+src="([^"]*)"[^>]*>/)?.[1];
+  $: postSlug = data.post.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
 </script>
 
 <svelte:head>
   <title>{data.post.title} - Skye Fugate's Blog</title>
   <meta name="description" content={data.post.excerpt} />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://fugate.dev/blog/posts/{data.post.slug}" />
+  <meta property="og:title" content={data.post.title} />
+  <meta property="og:description" content={data.post.excerpt} />
+  <meta property="og:image" content={headerImage ? `https://fugate.dev${headerImage}` : "https://fugate.dev/preview.png"} />
+  <meta property="og:site_name" content="Skye Fugate's Blog" />
+  <meta property="article:author" content={data.post.author} />
+  <meta property="article:published_time" content={data.post.date} />
+  {#if data.post.tags}
+    {#each data.post.tags as tag}
+      <meta property="article:tag" content={tag} />
+    {/each}
+  {/if}
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://fugate.dev/blog/posts/{postSlug}" />
+  <meta name="twitter:title" content={data.post.title} />
+  <meta name="twitter:description" content={data.post.excerpt} />
+  <meta name="twitter:image" content={headerImage ? `https://fugate.dev${headerImage}` : "https://fugate.dev/preview.png"} />
+  <meta name="twitter:creator" content="@skyefugate" />
 </svelte:head>
 
 <div class="container">
