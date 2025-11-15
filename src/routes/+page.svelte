@@ -122,7 +122,7 @@
         href={navLink.route}
         style={`--accent: ${findRouteColor(navLink.route)};`}
       >
-        <Heading level="h3" size="1.4rem" color="var(--home-accent-foreground)" weight={600}
+        <Heading level="h3" size="1.2rem" color="var(--home-accent-foreground)" weight={600}
           >{navLink.label}</Heading
         >
         <p class="subtitle">{navLink.description}</p>
@@ -232,10 +232,17 @@
       border-radius: 4px;
       text-decoration: none;
       padding: 0.4rem 0.8rem;
+      min-height: 3rem;
+      display: flex;
+      align-items: center;
       // border-left: 4px solid var(--accent);
       transition: all ease-in-out 0.25s, transform ease-in-out 0.3s;
       overflow: hidden;
       pointer-events: all;
+      
+      :global(h3) {
+        line-height: 1.3;
+      }
 
       p.subtitle {
         position: absolute;
