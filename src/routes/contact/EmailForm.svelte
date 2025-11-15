@@ -141,16 +141,6 @@
 </form>
 
 <style lang="scss">
-  h2 {
-    font-size: 2rem;
-    margin: 1rem 0;
-    color: var(--accent);
-    &:before {
-      content: '>';
-      margin-right: 6px;
-      opacity: 0.8;
-    }
-  }
   form {
     display: flex;
     flex: 1;

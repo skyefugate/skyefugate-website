@@ -67,11 +67,6 @@
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
-    h2 {
-      font-size: 2rem;
-      margin: 1rem 0;
-      color: var(--accent);
-    }
     .social-wrapper {
       flex: 1;
       display: flex;

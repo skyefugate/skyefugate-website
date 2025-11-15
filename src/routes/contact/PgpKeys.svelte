@@ -53,15 +53,6 @@
 <style lang="scss">
   .pgp-container {
     min-width: 500px;
-    h2 {
-      font-size: 2rem;
-      margin: 1rem 0;
-      color: var(--accent);
-      &:before {
-        content: '>';
-        margin-right: 6px;
-      }
-    }
     .pgp-key {
       margin: 1rem 0;
       white-space: pre;

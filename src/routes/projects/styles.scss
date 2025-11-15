@@ -151,19 +151,6 @@
     }
   }
 
-  .no-results {
-    background: var(--card-background);
-    border: var(--card-border);
-    border-radius: 4px;
-    color: var(--foreground);
-    margin: 2rem calc(5vw + 1rem);
-    padding: 1rem 2rem;
-    h4 {
-      font-size: 1.6rem;
-      margin: 0.5rem 0;
-    }
-  }
-
   .load-more {
     margin: 1rem auto;
     display: flex;
@@ -172,11 +159,6 @@
     text-align: center;
     span {
       opacity: 0.8;
-    }
-    a {
-      width: 25vw;
-      max-width: 40rem;
-      min-width: 10rem;
     }
   }
 

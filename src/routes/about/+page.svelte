@@ -152,10 +152,6 @@
       grid-row-start: span 3;
     }
 
-    // Social links section
-    &.soclials {
-      grid-column-start: span 2;
-    }
     &.resume {
       grid-column-start: span 2;
     }
