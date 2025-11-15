@@ -160,6 +160,7 @@
   main.homepage {
     position: relative;
     z-index: 2;
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -242,6 +243,7 @@
         transform: translateX(-100%) translateY(2rem) scale(0.5) rotate(5deg);
         transition: all ease-in-out 0.2s;
         opacity: 0;
+        pointer-events: none;
         white-space: nowrap;
         left: 1rem;
         right: 1rem;
