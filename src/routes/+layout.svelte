@@ -81,6 +81,7 @@
   main {
     min-height: 100%;
     min-height: 89vh;
+    padding-top: 3.5rem; // Space for fixed navbar
   }
 
   .website {

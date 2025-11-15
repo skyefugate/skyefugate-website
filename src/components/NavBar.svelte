@@ -41,8 +41,10 @@
     border-bottom: var(--card-border);
     color: var(--foreground);
     padding: 0.5rem;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     
     a.homepage-link {

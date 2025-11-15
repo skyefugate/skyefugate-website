@@ -41,7 +41,7 @@
     border-bottom: var(--card-border);
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 800;
       margin: 0 0 1rem 0;
       line-height: 1.2;
