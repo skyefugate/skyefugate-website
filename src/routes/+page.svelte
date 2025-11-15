@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
   import { browser } from '$app/environment';
   import { config } from '$src/store/BlogStore';
   import Heading from '$src/components/Heading.svelte';
@@ -35,7 +35,6 @@
   let mouseMoveHandler: ((e: MouseEvent) => void) | null = null;
 
   onMount(() => {
-    console.log('Homepage mounted, adding class');
     // Add homepage class to body for mouse effect
     document.body.classList.add('homepage');
     
@@ -80,19 +79,19 @@
       // Start the body animation loop
       animationFrameId = requestAnimationFrame(updatePosition);
     }
-  });
 
-  onDestroy(() => {
-    console.log('Homepage destroyed, removing class');
-    if (browser) {
-      document.body.classList.remove('homepage');
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
+    // Cleanup on page leave
+    return () => {
+      if (browser) {
+        document.body.classList.remove('homepage');
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+        if (mouseMoveHandler) {
+          document.body.removeEventListener('mousemove', mouseMoveHandler);
+        }
       }
-      if (mouseMoveHandler) {
-        document.body.removeEventListener('mousemove', mouseMoveHandler);
-      }
-    }
+    };
   });
 
 </script>
