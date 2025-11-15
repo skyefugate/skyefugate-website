@@ -160,7 +160,6 @@
   main.homepage {
     position: relative;
     z-index: 2;
-    pointer-events: none;
     display: flex;
     flex-direction: column;
     align-items: center;
