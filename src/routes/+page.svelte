@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import { config } from '$src/store/BlogStore';
   import Heading from '$src/components/Heading.svelte';
   import AnimatedHero from '$src/components/AnimatedHero.svelte';
@@ -74,11 +74,10 @@
       // Start the body animation loop
       requestAnimationFrame(updatePosition);
     }
-    
-    // Cleanup on page leave
-    return () => {
-      document.body.classList.remove('homepage');
-    };
+  });
+
+  onDestroy(() => {
+    document.body.classList.remove('homepage');
   });
 
 </script>
