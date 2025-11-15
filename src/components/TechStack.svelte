@@ -12,14 +12,10 @@
   </script>
   
   <section class="tech-stack-section" style="--accent:{accent};">
-    <Heading level="h2">Tech Stack</Heading>
-    <p class="sub-info">
-      Usually the tools I use for the job, depend on the job.
-      There's no one-size fits all, and as such I'm always trying out new technologies, and constantly learning.
-    </p>
-    <p class="sub-info">
-      The following technologies are the ones I'm most familiar with, and I've linked to code that I've written with each.
-    </p>
+    <Heading level="h2">{config.techStackIntro.title}</Heading>
+    {#each config.techStackIntro.description as paragraph}
+      <p class="sub-info">{paragraph}</p>
+    {/each}
     <div class="stack-table">
       {#each techStacks as stackName}
       <div class="stack-name">

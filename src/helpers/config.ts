@@ -348,6 +348,25 @@ const config: SiteConfig = {
       'Prometheus', 'Grafana', 'Datadog', 'Splunk', 'ELK Stack',
     ],
   },
+  homepage: {
+    heroLines: [
+      'Hello 👋',
+      '\n',
+      `I'm Skye Fugate`,
+      'I architect secure systems 🛠️',
+      'that keep technology running 🚀',
+      'with security at the core 🔐',
+      'and automation that actually works ⚡',
+      'Thanks for visiting 🥰'
+    ],
+  },
+  techStackIntro: {
+    title: 'Tech Stack',
+    description: [
+      "There's no one-size fits all, and as such I'm always trying out new technologies, and constantly learning.",
+      "The following technologies are the ones I'm most familiar with, and I've linked to code that I've written with each."
+    ],
+  },
 };
 
 export default config;

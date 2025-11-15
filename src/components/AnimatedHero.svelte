@@ -11,16 +11,7 @@
   onMount(() => {
 
 
-    const lines = [
-      'Hello 👋',
-      '\n',
-      `I'm ${config.author}`,
-      'I architect secure systems 🛠️',
-      'that keep technology running 🚀',
-      'with security at the core 🔐',
-      'and automation that actually works ⚡',
-      'Thanks for visiting 🥰'
-    ];
+    const lines = config.homepage.heroLines;
 
     const typeWithVariableSpeed = (instance: TypeIt, text: string) => {
       Array.from(text).forEach(char => {

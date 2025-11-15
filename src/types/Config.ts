@@ -114,6 +114,13 @@ export interface SiteConfig {
   techStackExtras: {
     [key: string]: string[],
   };
+  homepage: {
+    heroLines: string[];
+  };
+  techStackIntro: {
+    title: string;
+    description: string[];
+  };
   plausible?: {
     scriptSrc: string;
     domain: string;
