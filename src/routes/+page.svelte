@@ -35,6 +35,7 @@
   let mouseMoveHandler: ((e: MouseEvent) => void) | null = null;
 
   onMount(() => {
+    console.log('Homepage mounted, adding class');
     // Add homepage class to body for mouse effect
     document.body.classList.add('homepage');
     
@@ -82,6 +83,7 @@
   });
 
   onDestroy(() => {
+    console.log('Homepage destroyed, removing class');
     if (browser) {
       document.body.classList.remove('homepage');
       if (animationFrameId) {
@@ -172,7 +174,6 @@
   main.homepage {
     position: relative;
     z-index: 2;
-    pointer-events: none;
     display: flex;
     flex-direction: column;
     align-items: center;
