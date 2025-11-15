@@ -31,6 +31,9 @@
     return routeLinks?.find((r) => r.route === route)?.color || 'var(--accent)';
   };
 
+  let animationFrameId: number;
+  let mouseMoveHandler: ((e: MouseEvent) => void) | null = null;
+
   onMount(() => {
     // Add homepage class to body for mouse effect
     document.body.classList.add('homepage');
@@ -62,24 +65,31 @@
         body.style.setProperty('--y', `${currentY}`);
 
         // Continue the animation loop
-        requestAnimationFrame(updatePosition);
+        animationFrameId = requestAnimationFrame(updatePosition);
       };
 
       // Track mouse movement
-      body.addEventListener('mousemove', (e: MouseEvent) => {
+      mouseMoveHandler = (e: MouseEvent) => {
         const { x, y } = body.getBoundingClientRect();
         mouseX = e.clientX - x;
         mouseY = e.clientY - y;
-      });
+      };
+      body.addEventListener('mousemove', mouseMoveHandler);
 
       // Start the body animation loop
-      requestAnimationFrame(updatePosition);
+      animationFrameId = requestAnimationFrame(updatePosition);
     }
   });
 
   onDestroy(() => {
     if (browser) {
       document.body.classList.remove('homepage');
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      if (mouseMoveHandler) {
+        document.body.removeEventListener('mousemove', mouseMoveHandler);
+      }
     }
   });
 
