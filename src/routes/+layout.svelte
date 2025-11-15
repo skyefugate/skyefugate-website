@@ -15,13 +15,11 @@
   };
 
   // Returns an accent color based on the current route
-  const routeBasedAccent = (pathname?: string) => {
+  const routeBasedAccent = (pathname?: string): string => {
     const path = pathname || $page.url.pathname;
-    return (
-      config.routeLinks?.find((rc) => rc.route === path)?.color ||
-      $themeColors['accent-1'] ||
-      '#ff0099'
-    );
+    const routeColor = config.routeLinks?.find((rc) => rc.route === path)?.color;
+    const themeAccent = $themeColors ? $themeColors['accent-1'] : undefined;
+    return routeColor || themeAccent || '#ff0099';
   };
 
   const shouldShowNavBar = (pagePath: string) => !['/', '/index'].includes(pagePath);

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
   import { createEventDispatcher } from 'svelte';
 
@@ -18,7 +18,7 @@
 
   const countainer = `__saos-${Math.random()}__`;
 
-  function intersection_verify(box) {
+  function intersection_verify(box: Element) {
     const rootMargin = `${-bottom}px 0px ${-top}px 0px`;
 
     const observer = new IntersectionObserver(
@@ -38,20 +38,25 @@
   }
 
   /// Fallback in case the browser not have the IntersectionObserver
-  function bounding_verify(box) {
-    const c = box.getBoundingClientRect();
-    observing = c.top + top < window.innerHeight && c.bottom - bottom > 0;
+  function bounding_verify(box: Element): () => void {
+    const handleScroll = () => {
+      const c = box.getBoundingClientRect();
+      observing = c.top + top < window.innerHeight && c.bottom - bottom > 0;
 
-    if (observing && once) {
-      window.removeEventListener('scroll', bounding_verify);
-    }
+      if (observing && once) {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
 
-    window.addEventListener('scroll', bounding_verify);
-    return () => window.removeEventListener('scroll', bounding_verify);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }
 
   onMount(() => {
     const box = document.getElementById(countainer);
+    if (!box) return;
+    
     if (IntersectionObserver) {
       return intersection_verify(box);
     } else {

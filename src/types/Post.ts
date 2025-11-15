@@ -7,6 +7,7 @@ export interface Post {
   content: string;
   author?: string;
   thumbnail?: string;
+  headerImage?: string;
   featured?: boolean;
   readingTime?: number;
 }

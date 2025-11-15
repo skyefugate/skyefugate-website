@@ -121,9 +121,6 @@
         class="tile"
         href={navLink.route}
         style={`--accent: ${findRouteColor(navLink.route)};`}
-        on:click={() => {
-          // Navigation handled by href
-        }}
       >
         <Heading level="h3" size="1.4rem" color="var(--home-accent-foreground)" weight={600}
           >{navLink.label}</Heading
