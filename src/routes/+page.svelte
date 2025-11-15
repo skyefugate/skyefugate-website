@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
   import { config } from '$src/store/BlogStore';
   import Heading from '$src/components/Heading.svelte';
   import AnimatedHero from '$src/components/AnimatedHero.svelte';
@@ -77,7 +78,9 @@
   });
 
   onDestroy(() => {
-    document.body.classList.remove('homepage');
+    if (browser) {
+      document.body.classList.remove('homepage');
+    }
   });
 
 </script>
