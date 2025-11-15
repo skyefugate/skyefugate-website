@@ -26,6 +26,13 @@ if (process.env.DEPLOY_TARGET === 'NETLIFY') {
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   preprocess: vitePreprocess(),
+  onwarn: (warning, handler) => {
+    // Ignore unused CSS selector warnings (hljs, theme selectors, etc)
+    if (warning.code === 'css-unused-selector') return;
+    // Ignore a11y warnings for now
+    if (warning.code.startsWith('a11y-')) return;
+    handler(warning);
+  },
   kit: {
     adapter: selectedAdapter,
     alias: {

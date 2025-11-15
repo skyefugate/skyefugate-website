@@ -22,9 +22,4 @@
   a {
     color: var(--accent);
   }
-  small {
-    display: block;
-    margin-top: 1rem; 
-    opacity: 0.6;
-  }
 </style>

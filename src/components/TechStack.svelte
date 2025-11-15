@@ -61,10 +61,6 @@
   
   <style lang="scss">
   .tech-stack-section {
-    .buttons {
-      display: flex;
-      gap: 1rem;
-    }
     .sub-info {
       font-size: 0.8rem;
       font-style: italic;
@@ -81,15 +77,12 @@
         h4 { margin: 0; }
       }
     }
-    .stack-row, .stack-extras-tech {
+    .stack-row {
       display: flex;
       padding: 0.5rem;
       gap: 0.5rem;
       &:not(:last-child) {
         border-bottom: 1px dashed var(--dimmed-text);
-      }
-      &.stack-extras-tech {
-        flex-wrap: wrap;
       }
       .stack-label {
         min-width: 6rem;
@@ -125,6 +118,12 @@
           }
         }
       }
+    }
+    .stack-extras-tech {
+      display: flex;
+      padding: 0.5rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
   }
   </style>
