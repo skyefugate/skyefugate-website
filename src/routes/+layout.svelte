@@ -92,6 +92,7 @@
   :global(html) {
     scroll-behavior: smooth;
     font-size: 15px; // Slightly smaller base size for better fit
+    overscroll-behavior: none; // Prevent rubber band scrolling on Mac
   }
   :global(body) {
     background: var(--background);
@@ -105,6 +106,7 @@
     justify-content: space-between;
     min-height: 100vh;
     overflow-x: hidden;
+    overscroll-behavior: none; // Prevent rubber band scrolling on Mac
 
     /* Fancy scrollbar */
     &::-webkit-scrollbar {

@@ -15,6 +15,7 @@
   <a class="homepage-link" href="/">
     <h1>{config.title}</h1>
   </a>
+  <div class="separator"></div>
   <div class="nav-links">
     {#each routeLinks as navLink}
       <a
@@ -34,21 +35,44 @@
   nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
     background: var(--card-background);
     border-bottom: var(--card-border);
     color: var(--foreground);
     padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    
     a.homepage-link {
       text-decoration: none;
       text-align: center;
+      flex-shrink: 0;
       h1 {
         margin: 0;
         color: var(--foreground);
+        font-size: 1.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
       }
     }
+    
+    .separator {
+      width: 2px;
+      height: 2rem;
+      background: var(--dimmed-text);
+      opacity: 0.3;
+      flex-shrink: 0;
+    }
+    
     .nav-links {
       display: flex;
       flex-wrap: wrap;
+      flex-grow: 1;
+      justify-content: flex-end;
       a {
         font-weight: 700;
         font-size: 1.2rem;
@@ -67,6 +91,10 @@
     }
     @include tablet-down {
       flex-direction: column;
+      .separator {
+        width: 100%;
+        height: 1px;
+      }
     }
   }
 </style>
