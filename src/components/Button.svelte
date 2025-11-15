@@ -4,7 +4,7 @@
   export let priority = 'primary';
   export let textColor = '';
   export let icon: string | null = null;
-  export let click: () => void = () => {};
+  export let click: (() => void) | undefined = undefined;
 </script> 
 
 <button class={priority} style={`--textColor: ${textColor};`} on:click={click}>

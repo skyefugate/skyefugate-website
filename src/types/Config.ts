@@ -1,6 +1,5 @@
 import type { RssUrlList } from '$src/types/RssXml';
 import type { Usernames } from '$src/types/Socials';
-import type { Locale } from '$src/types/Language';
 
 export type Theme = 'dark' | 'light' | 'system' | 'callisto';
 
@@ -18,7 +17,6 @@ export interface SiteConfig {
   loadIndex?: boolean; // Weather to skip to /index instead of /home
   initialFeeds: RssUrlList; // List of RSS feeds to fetch + show on load
   additionalFeeds: RssUrlList; // List of all available feeds to add to filter dropdown
-  defaultLanguage: Locale; // Default language to use if 'system' is not supported
   defaultTheme: Theme; // Default theme to use if 'system' is not supported
   colorSchemes?: {
     [key: string]: {

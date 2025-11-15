@@ -3,7 +3,6 @@
   import TechStack from '$src/components/TechStack.svelte';
   import WorkExperience from '$src/components/WorkExperience.svelte';
   import Resume from '$src/components/Resume.svelte';
-  import { t } from '$src/store/Language';
 
   import config from '$src/helpers/config';
 
@@ -16,7 +15,7 @@
 
 <!-- Page title -->
 <div class="heading">
-  <Heading level="h2" size="2.5rem">{$t('pages.about')}</Heading>
+  <Heading level="h2" size="2.5rem">About</Heading>
 </div>
 
 <!-- Bio paragraphs -->

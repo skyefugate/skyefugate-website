@@ -185,7 +185,7 @@
       </div>
     {:else}
       <!-- Hidden TOC peek tab - fixed position -->
-      <div class="toc-peek-tab" on:click={toggleToc} title="Show contents">
+      <div class="toc-peek-tab" on:click={toggleToc} on:keydown={toggleToc} role="button" tabindex="0" title="Show contents">
         <div class="peek-content">
           <div class="peek-icon">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -204,7 +204,7 @@
     {/if}
   {:else}
     <!-- Reader mode exit notch - fixed position -->
-    <div class="reader-notch" title="Exit reader mode" on:click={toggleReaderMode}>
+    <div class="reader-notch" title="Exit reader mode" on:click={toggleReaderMode} on:keydown={toggleReaderMode} role="button" tabindex="0">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>

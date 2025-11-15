@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <script lang="ts">
   import { onMount } from 'svelte';
 

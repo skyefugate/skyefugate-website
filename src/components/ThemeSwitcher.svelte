@@ -3,7 +3,7 @@
   import config from '$src/helpers/config';
   import type { Theme } from '$src/types/Config';
   import { theme } from '$src/store/ThemeStore';
-  import clickOutside from '$src/directives/clickOutside';
+  import clickOutside from '$src/helpers/clickOutside';
 
   const themes = Object.keys(config.colorSchemes || {});
 

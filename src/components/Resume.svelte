@@ -1,5 +1,4 @@
 <script lang="ts">
-  import config from '$src/helpers/config';
   import Heading from '$src/components/Heading.svelte';
   import Icon from '$src/components/Icon.svelte';
   import Button from '$src/components/Button.svelte'; 
@@ -14,12 +13,10 @@
 </p>
 
 <p>A shortened PDF version can be downloaded below ↓</p>
-<Button click={() => window.location.href = "https://cv.aliciasykes.com/download" }>
+<Button click={() => window.location.href = "https://cv.skyefugate.com/download" }>
   <Icon name="download" />
   Download CV
 </Button>
-
-<small>Source code for CV is hosted at <a href="https://github.com/lissy93/cv">github.com/lissy93/cv</a></small>
 
 <style lang="scss">
   a {

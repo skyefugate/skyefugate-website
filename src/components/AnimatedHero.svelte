@@ -4,7 +4,7 @@
   import config from '$src/helpers/config';
 
   // Generates a random number of ms between 2 values
-  const randomTime = (min: number = 2, max: number = 12) => {
+  const randomTime = (min = 2, max = 12) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }; 
 
@@ -64,7 +64,6 @@
 
 
 <header class="container">
-  <h3 class="intro"></h3>
 </header>
 
 

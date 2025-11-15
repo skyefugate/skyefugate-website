@@ -9,7 +9,7 @@
     label: string;
     selected: boolean;
   }[];
-  export let multiple: boolean = false;
+  export let multiple = false;
 
   let selectedOptions: string[] = options.filter(option => option.selected).map(option => option.id);
 
