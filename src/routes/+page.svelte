@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { browser } from '$app/environment';
   import { config } from '$src/store/BlogStore';
   import Heading from '$src/components/Heading.svelte';
   import AnimatedHero from '$src/components/AnimatedHero.svelte';
@@ -30,9 +29,6 @@
   const findRouteColor = (route: string) => {
     return routeLinks?.find((r) => r.route === route)?.color || 'var(--accent)';
   };
-
-  let animationFrameId: number;
-  let mouseMoveHandler: ((e: MouseEvent) => void) | null = null;
 
   onMount(() => {
     // Add homepage class to body for mouse effect
@@ -65,32 +61,23 @@
         body.style.setProperty('--y', `${currentY}`);
 
         // Continue the animation loop
-        animationFrameId = requestAnimationFrame(updatePosition);
+        requestAnimationFrame(updatePosition);
       };
 
       // Track mouse movement
-      mouseMoveHandler = (e: MouseEvent) => {
+      body.addEventListener('mousemove', (e: MouseEvent) => {
         const { x, y } = body.getBoundingClientRect();
         mouseX = e.clientX - x;
         mouseY = e.clientY - y;
-      };
-      body.addEventListener('mousemove', mouseMoveHandler);
+      });
 
       // Start the body animation loop
-      animationFrameId = requestAnimationFrame(updatePosition);
+      requestAnimationFrame(updatePosition);
     }
-
+    
     // Cleanup on page leave
     return () => {
-      if (browser) {
-        document.body.classList.remove('homepage');
-        if (animationFrameId) {
-          cancelAnimationFrame(animationFrameId);
-        }
-        if (mouseMoveHandler) {
-          document.body.removeEventListener('mousemove', mouseMoveHandler);
-        }
-      }
+      document.body.classList.remove('homepage');
     };
   });
 
@@ -134,6 +121,9 @@
         class="tile"
         href={navLink.route}
         style={`--accent: ${findRouteColor(navLink.route)};`}
+        on:click={() => {
+          // Navigation handled by href
+        }}
       >
         <Heading level="h3" size="1.4rem" color="var(--home-accent-foreground)" weight={600}
           >{navLink.label}</Heading
@@ -173,6 +163,7 @@
   main.homepage {
     position: relative;
     z-index: 2;
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -255,7 +246,6 @@
         transform: translateX(-100%) translateY(2rem) scale(0.5) rotate(5deg);
         transition: all ease-in-out 0.2s;
         opacity: 0;
-        pointer-events: none;
         white-space: nowrap;
         left: 1rem;
         right: 1rem;
