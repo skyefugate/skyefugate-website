@@ -301,6 +301,10 @@
   }
 
   .reader-notch {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
     width: 32px;
     height: 48px;
     background: var(--card-background);
@@ -314,10 +318,11 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     transition: all 0.2s ease;
+    z-index: 1000;
     
     &:hover {
       color: var(--foreground);
-      transform: translateX(-4px);
+      transform: translateY(-50%) translateX(-4px);
     }
   }
 

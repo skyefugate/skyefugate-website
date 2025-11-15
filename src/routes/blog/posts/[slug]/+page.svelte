@@ -85,6 +85,10 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 0 2rem;
+    
+    @media (min-width: 1200px) {
+      padding-right: 280px; // Make room for TOC (250px width + 30px gap)
+    }
   }
 
   .back-nav {
