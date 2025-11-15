@@ -4,7 +4,7 @@
   import config from '$src/helpers/config';
 
   // Generates a random number of ms between 2 values
-  const randomTime = (min = 2, max = 12) => {
+  const randomTime = (min = 1, max = 5) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }; 
 
@@ -29,11 +29,11 @@
     };
 
     const typeLineBreak = (instance: TypeIt) => {
-      instance.pause(150).break().pause(450);
+      instance.pause(50).break().pause(150);
     };
 
     const typeItInstance = new TypeIt(".intro");
-    typeItInstance.options({ speed: 10, lifeLike: true });
+    typeItInstance.options({ speed: 5, lifeLike: true });
 
     typeWithVariableSpeed(typeItInstance, lines[0]);
     typeLineBreak(typeItInstance);
