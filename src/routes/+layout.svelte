@@ -91,6 +91,7 @@
 
   :global(html) {
     scroll-behavior: smooth;
+    font-size: 15px; // Slightly smaller base size for better fit
   }
   :global(body) {
     background: var(--background);
@@ -98,6 +99,7 @@
     transition: all 0.25s ease-in-out;
     font-family: FiraCode;
     margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

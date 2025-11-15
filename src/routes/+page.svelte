@@ -105,8 +105,8 @@
           <Icon
             name={social.icon}
             color="var(--home-accent-background)"
-            width="1.8rem"
-            height="1.8rem"
+            width="1.5rem"
+            height="1.5rem"
             hoverColor={social.tone}
           />
         </a>
@@ -143,7 +143,7 @@
   }
 
   h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     font-family: 'Permanent Marker', 'Poppins', 'Baloo Paaji', cursive;
     text-align: center;
     margin: 0 auto;
@@ -165,7 +165,8 @@
     flex-direction: column;
     align-items: center;
     // min-height: 100vh;
-    gap: 2rem;
+    gap: 1.5rem;
+    padding: 1rem 0;
   }
 
   :global(body) {
@@ -215,8 +216,8 @@
     // margin: auto;
     // padding: 1rem;
     // grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    max-width: 32rem;
-    gap: 1rem;
+    max-width: 28rem;
+    gap: 0.75rem;
     width: 80vw;
     display: flex;
     flex-direction: column;
@@ -230,7 +231,7 @@
       // background: var(--home-tile-background);
       border-radius: 4px;
       text-decoration: none;
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.8rem;
       // border-left: 4px solid var(--accent);
       transition: all ease-in-out 0.25s, transform ease-in-out 0.3s;
       overflow: hidden;

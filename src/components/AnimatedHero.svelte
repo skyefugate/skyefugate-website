@@ -72,12 +72,12 @@
 
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   width: 100%;
   line-height: 1.25;
   font-weight: 500;
-  min-width: 32rem;
-  min-height: 12rem;
+  min-width: 28rem;
+  min-height: 10rem;
 }
 
 // // Styling variables
