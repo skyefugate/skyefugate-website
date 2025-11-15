@@ -82,13 +82,9 @@
 
 <style lang="scss">
   .container {
-    max-width: 900px;
+    max-width: 750px;
     margin: 0 auto;
     padding: 0 2rem;
-    
-    @media (min-width: 1400px) {
-      margin-right: 280px; // Shift left to make room for TOC on very wide screens
-    }
   }
 
   .back-nav {

@@ -475,7 +475,7 @@
     background: #faf9f7 !important;
     
     :global(.container) {
-      max-width: 750px !important;
+      max-width: 800px !important;
       padding: 0 3rem !important;
       margin: 0 auto !important;
     }
